@@ -1,0 +1,78 @@
+/* ========================================
+   VARIABLES & THÈME PharmaGuard
+   ======================================== */
+
+:root {
+  /* Couleurs Primaires - Vert Pharmacie */
+  --primary: #22a356;
+  --primary-dark: #1a7d43;
+  --primary-light: #3db57a;
+  --primary-lighter: #e8f5e9;
+
+  /* Couleurs Secondaires - Bleu */
+  --secondary: #0066cc;
+  --secondary-dark: #0052a3;
+  --secondary-light: #3399ff;
+
+  /* Couleurs d'État */
+  --danger: #e74c3c;
+  --danger-light: #fadbd8;
+  --success: #22a356;
+  --success-light: #d5f4e6;
+  --warning: #f39c12;
+  --warning-light: #fef5e7;
+  --info: #3498db;
+  --info-light: #d6eaf8;
+
+  /* Couleurs Texte */
+  --text-dark: #1a1a1a;
+  --text-muted: #555555;
+  --text-light: #888888;
+  --text-white: #ffffff;
+
+  /* Couleurs Fond */
+  --bg-light: #f5f7fa;
+  --bg-lighter: #f9fafb;
+  --bg-white: #ffffff;
+  --bg-dark: #1f2937;
+  --bg-darkest: #111827;
+
+  /* Bordures */
+  --border-color: #d1d5db;
+  --border-color-light: #e5e7eb;
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.18);
+
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease-out;
+  --transition-slow: all 0.5s ease-out;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #22a356 0%, #1a7d43 100%);
+  --gradient-secondary: linear-gradient(135deg, #0066cc 0%, #003d8f 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  line-height: 1.6;
+}
