@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../includes/helpers.php';
 
 // Récupérer les données utilisateur si connecté
 $currentUser = isLoggedIn() ? getCurrentUser() : null;
+$searchQuery = isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,7 +37,7 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
           <div class="row g-3 align-items-end">
             <div class="col-md-8">
               <label for="med-search" class="form-label fw-bold">Nom du médicament</label>
-              <input type="text" class="form-control form-control-lg" id="med-search" placeholder="Ex: Paracétamol, Amoxicilline..." />
+              <input type="text" class="form-control form-control-lg" id="med-search" placeholder="Ex: Paracétamol, Amoxicilline..." value="<?php echo $searchQuery; ?>" />
             </div>
             <div class="col-md-4">
               <button class="btn btn-primary btn-lg w-100" id="search-btn-med">
@@ -52,16 +53,6 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
         </div>
       </div>
     </section>
-
-    <!-- Popular Medicines -->
-    <section class="py-5 bg-light">
-      <div class="container-lg">
-        <h2 class="fw-bold mb-5">Médicaments populaires</h2>
-        <div class="row gy-4" id="popularMedicines">
-          <!-- Les cartes seront générées par JavaScript -->
-        </div>
-      </div>
-    </section>
   </main>
 
   <?php include __DIR__ . '/../../includes/footer.php'; ?>
@@ -71,5 +62,24 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
   <script src="js/script.js"></script>
   <script src="js/medicaments.js"></script>
   <script src="js/reservation.js"></script>
+  
+  <script>
+    // Afficher les résultats de recherche si un paramètre 'q' est présent
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('q');
+    
+    // Initialiser le badge du panier au chargement
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartBadge();
+    });
+    
+    if (searchQuery) {
+      // Afficher les résultats de recherche au chargement
+      setTimeout(() => {
+        document.getElementById('med-search').value = searchQuery;
+        searchMedicinesWithPharmacies(searchQuery);
+      }, 500);
+    }
+  </script>
 </body>
 </html>

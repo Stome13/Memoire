@@ -292,6 +292,61 @@ try {
         exit;
     }
 
+    /**
+     * GET - Chercher des médicaments avec stocks et pharmacies
+     */
+    if ($action === 'search_with_stocks' && $_SERVER['REQUEST_METHOD'] === 'GET') {
+        $query_str = trim($_GET['q'] ?? '');
+        
+        if (empty($query_str)) {
+            echo json_encode(['success' => false, 'error' => 'Terme de recherche requis']);
+            exit;
+        }
+
+        // Chercher les médicaments
+        $query = 'SELECT m.* FROM medicaments m WHERE m.nom LIKE ? OR m.categorie LIKE ? ORDER BY m.nom ASC';
+        $stmt = $conn->prepare($query);
+        $search_term = '%' . $query_str . '%';
+        $stmt->execute([$search_term, $search_term]);
+        $medicaments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Pour chaque médicament, récupérer les pharmacies et les stocks
+        $results = [];
+        foreach ($medicaments as $med) {
+            // Récupérer les stocks avec les infos de pharmacie
+            $stockQuery = 'SELECT 
+                            p.id as pharmacie_id,
+                            p.nom as pharmacie_nom,
+                            p.adresse as pharmacie_adresse,
+                            p.telephone as pharmacie_telephone,
+                            p.email as pharmacie_email,
+                            s.quantite,
+                            CASE 
+                                WHEN g.id IS NOT NULL AND g.date_garde = CURDATE() THEN 1 
+                                ELSE 0 
+                            END as is_garde,
+                            g.heure_debut,
+                            g.heure_fin
+                        FROM stocks s
+                        INNER JOIN pharmacies p ON s.pharmacie_id = p.id
+                        LEFT JOIN gardes g ON p.id = g.pharmacie_id AND g.date_garde = CURDATE()
+                        WHERE s.medicament_id = ?
+                        ORDER BY p.nom ASC';
+            $stockStmt = $conn->prepare($stockQuery);
+            $stockStmt->execute([$med['id']]);
+            $stocks = $stockStmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $med['pharmacies'] = $stocks;
+            $results[] = $med;
+        }
+
+        echo json_encode([
+            'success' => true,
+            'data' => $results
+        ]);
+        exit;
+    }
+
     // Action non reconnue
     http_response_code(400);
     echo json_encode(['success' => false, 'error' => 'Action non reconnue']);

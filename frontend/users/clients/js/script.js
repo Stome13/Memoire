@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
     searchBtn.addEventListener('click', function () {
       const query = document.getElementById('search-med').value;
       if (query) {
-        window.location.href = `medicaments.html?q=${encodeURIComponent(query)}`;
+        window.location.href = `medicaments.php?q=${encodeURIComponent(query)}`;
       }
     });
 

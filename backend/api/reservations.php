@@ -48,6 +48,103 @@ if ($action === 'create') {
     }
 }
 
+// OBTENIR LES RÉSERVATIONS DE L'UTILISATEUR CONNECTÉ
+else if ($action === 'getByUser') {
+    $db = Database::getInstance()->getConnection();
+    $stmt = $db->prepare("
+        SELECT r.id, r.quantite, r.date_reservation, r.statut,
+               m.nom as medicament_nom, m.dosage, m.categorie, p.nom as pharmacie_nom
+        FROM reservations r
+        JOIN medicaments m ON r.medicament_id = m.id
+        JOIN pharmacies p ON r.pharmacie_id = p.id
+        WHERE r.user_id = ?
+        ORDER BY r.date_reservation DESC
+    ");
+    $stmt->execute([$_SESSION['user_id']]);
+    $reservations = $stmt->fetchAll();
+
+    jsonResponse([
+        'success' => true,
+        'data' => $reservations
+    ]);
+}
+
+// METTRE À JOUR UNE RÉSERVATION
+else if ($action === 'update') {
+    $reservation_id = getPost('id');
+    $new_quantite = getPost('quantite');
+
+    if (empty($reservation_id) || empty($new_quantite)) {
+        jsonResponse(['success' => false, 'error' => 'Données manquantes'], 400);
+    }
+
+    $db = Database::getInstance()->getConnection();
+    
+    // Vérifier que la réservation appartient à l'utilisateur et est modifiable
+    $stmt = $db->prepare("SELECT id, statut, medicament_id, pharmacie_id FROM reservations WHERE id = ? AND user_id = ?");
+    $stmt->execute([$reservation_id, $_SESSION['user_id']]);
+    $reservation = $stmt->fetch();
+    
+    if (!$reservation) {
+        jsonResponse(['success' => false, 'error' => 'Réservation non trouvée'], 404);
+    }
+
+    // Vérifier que le statut permet la modification
+    if (strtolower($reservation['statut']) !== 'en attente') {
+        jsonResponse(['success' => false, 'error' => 'Seules les réservations en attente peuvent être modifiées'], 400);
+    }
+
+    // Vérifier la disponibilité du stock
+    $stmt = $db->prepare("SELECT quantite FROM stocks WHERE pharmacie_id = ? AND medicament_id = ?");
+    $stmt->execute([$reservation['pharmacie_id'], $reservation['medicament_id']]);
+    $stock = $stmt->fetch();
+
+    if (!$stock || $stock['quantite'] < $new_quantite) {
+        jsonResponse(['success' => false, 'error' => 'Quantité insuffisante en stock'], 400);
+    }
+
+    // Mettre à jour la quantité
+    $stmt = $db->prepare("UPDATE reservations SET quantite = ? WHERE id = ?");
+    $stmt->execute([$new_quantite, $reservation_id]);
+
+    logAction($_SESSION['user_id'], 'reservation_updated', ['reservation_id' => $reservation_id, 'new_quantite' => $new_quantite]);
+
+    jsonResponse(['success' => true, 'message' => 'Réservation mise à jour avec succès']);
+}
+
+// SUPPRIMER/ANNULER UNE RÉSERVATION
+else if ($action === 'delete') {
+    $reservation_id = getPost('id');
+
+    if (empty($reservation_id)) {
+        jsonResponse(['success' => false, 'error' => 'ID manquant'], 400);
+    }
+
+    $db = Database::getInstance()->getConnection();
+    
+    // Vérifier que la réservation appartient à l'utilisateur
+    $stmt = $db->prepare("SELECT id, statut FROM reservations WHERE id = ? AND user_id = ?");
+    $stmt->execute([$reservation_id, $_SESSION['user_id']]);
+    $reservation = $stmt->fetch();
+    
+    if (!$reservation) {
+        jsonResponse(['success' => false, 'error' => 'Réservation non trouvée'], 404);
+    }
+
+    // Vérifier que le statut permet l'annulation
+    if (strtolower($reservation['statut']) !== 'en attente') {
+        jsonResponse(['success' => false, 'error' => 'Seules les réservations en attente peuvent être annulées'], 400);
+    }
+
+    // Annuler la réservation
+    $stmt = $db->prepare("UPDATE reservations SET statut = 'annulée' WHERE id = ?");
+    $stmt->execute([$reservation_id]);
+
+    logAction($_SESSION['user_id'], 'reservation_deleted', ['reservation_id' => $reservation_id]);
+
+    jsonResponse(['success' => true, 'message' => 'Réservation annulée avec succès']);
+}
+
 // OBTENIR MES RÉSERVATIONS
 else if ($action === 'getMyReservations') {
     $db = Database::getInstance()->getConnection();

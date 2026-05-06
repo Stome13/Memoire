@@ -21,6 +21,12 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
         <li class="nav-item">
           <a class="nav-link <?php echo $currentPage === 'medicaments' ? 'active' : ''; ?>" href="medicaments.php">Médicaments</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link cart-badge" href="#" onclick="openCartModal(); return false;">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-badge" style="display: none;">0</span>
+          </a>
+        </li>
         <li class="nav-item" id="authNav">
           <?php if ($currentUser): ?>
             <div class="nav-item dropdown">
@@ -44,3 +50,13 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
     </div>
   </div>
 </nav>
+
+<script src="/PharmaLocal/frontend/users/clients/js/medicaments.js"></script>
+<script>
+  // Initialiser le badge du panier au chargement de chaque page
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof updateCartBadge === 'function') {
+      updateCartBadge();
+    }
+  });
+</script>

@@ -1,12 +1,32 @@
 <?php
 require_once __DIR__ . '/../../includes/session.php';
 require_once __DIR__ . '/../../includes/helpers.php';
+require_once __DIR__ . '/../../../backend/includes/db.php';
 
 // Vérifier que l'utilisateur est connecté
 requireLogin();
 
 // Récupérer les données utilisateur
 $currentUser = getCurrentUser();
+
+// Récupérer les réservations de l'utilisateur
+$reservations = [];
+try {
+    $db = Database::getInstance()->getConnection();
+    $stmt = $db->prepare("
+        SELECT r.id, r.quantite, r.date_reservation, r.statut,
+               m.nom as medicament_nom, m.dosage, m.categorie, p.nom as pharmacie_nom
+        FROM reservations r
+        JOIN medicaments m ON r.medicament_id = m.id
+        JOIN pharmacies p ON r.pharmacie_id = p.id
+        WHERE r.user_id = ?
+        ORDER BY r.date_reservation DESC
+    ");
+    $stmt->execute([$currentUser['id']]);
+    $reservations = $stmt->fetchAll();
+} catch (Exception $e) {
+    error_log("Erreur chargement réservations: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -184,7 +204,7 @@ $currentUser = getCurrentUser();
               </button>
               <button class="list-group-item list-group-item-action" data-bs-toggle="list" href="#reservations-tab">
                 <i class="fas fa-calendar-check me-2"></i>Mes Réservations
-                <span id="reservationCount" class="badge bg-primary ms-auto">0</span>
+                <span class="badge bg-primary ms-auto"><?php echo count($reservations); ?></span>
               </button>
               <button class="list-group-item list-group-item-action" data-bs-toggle="list" href="#security-tab">
                 <i class="fas fa-lock me-2"></i>Sécurité
@@ -269,7 +289,67 @@ $currentUser = getCurrentUser();
             <!-- Reservations Tab -->
             <div class="profile-card d-none" id="reservations-tab">
               <h4><i class="fas fa-calendar-check me-2"></i>Mes Réservations</h4>
-              <div id="reservationsList"></div>
+              
+              <?php if (empty($reservations)): ?>
+                <div class="empty-state">
+                  <i class="fas fa-inbox"></i>
+                  <p class="mt-3">Aucune réservation pour le moment</p>
+                </div>
+              <?php else: ?>
+                <div class="reservations-list">
+                  <?php foreach ($reservations as $reservation): ?>
+                    <?php
+                      $statusClass = [
+                        'en attente' => 'status-pending',
+                        'confirmée' => 'status-confirmed',
+                        'prête' => 'status-picked',
+                        'retirée' => 'status-picked',
+                        'annulée' => 'status-cancelled'
+                      ][strtolower($reservation['statut'])] ?? 'status-pending';
+                      
+                      $canModify = strtolower($reservation['statut']) === 'en attente';
+                    ?>
+                    <div class="reservation-card">
+                      <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                          <h6 class="fw-bold mb-1"><?php echo escape($reservation['medicament_nom']); ?></h6>
+                          <p class="text-muted small mb-0">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            <?php echo escape($reservation['pharmacie_nom']); ?>
+                          </p>
+                        </div>
+                        <span class="reservation-status <?php echo $statusClass; ?>">
+                          <?php echo ucfirst($reservation['statut']); ?>
+                        </span>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p class="small mb-2"><strong>Quantité:</strong> <?php echo $reservation['quantite']; ?></p>
+                          <p class="small mb-0"><strong>Date:</strong> <?php echo date('d/m/Y', strtotime($reservation['date_reservation'])); ?></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p class="small mb-2"><strong>Dosage:</strong> <?php echo escape($reservation['dosage'] ?? '-'); ?></p>
+                          <p class="small mb-0"><strong>Catégorie:</strong> <?php echo escape($reservation['categorie'] ?? '-'); ?></p>
+                        </div>
+                      </div>
+                      
+                      <div class="d-flex gap-2 mt-3">
+                        <?php if ($canModify): ?>
+                          <button class="btn btn-warning btn-action" onclick="openEditReservationModal(<?php echo $reservation['id']; ?>, <?php echo $reservation['quantite']; ?>)">
+                            <i class="fas fa-edit me-1"></i>Modifier
+                          </button>
+                          <button class="btn btn-danger btn-action" onclick="deleteReservation(<?php echo $reservation['id']; ?>)">
+                            <i class="fas fa-trash me-1"></i>Annuler
+                          </button>
+                        <?php else: ?>
+                          <span class="text-muted small"><i class="fas fa-lock me-1"></i>Non modifiable</span>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              <?php endif; ?>
             </div>
 
             <!-- Security Tab -->
@@ -499,6 +579,177 @@ $currentUser = getCurrentUser();
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       `;
       container.appendChild(alertDiv);
+    }
+
+    // ========================================
+    // GESTION DES RÉSERVATIONS
+    // ========================================
+
+    // Ouvrir le modal pour modifier une réservation
+    function openEditReservationModal(reservationId, currentQuantity) {
+      const modalHTML = `
+        <div class="modal fade" id="editReservationModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+              <div class="modal-header border-0 pb-0 bg-light">
+                <h5 class="modal-title fw-bold">Modifier la réservation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <label for="new-quantity" class="form-label fw-bold">Nouvelle quantité</label>
+                <div class="input-group">
+                  <button type="button" class="btn btn-outline-secondary" id="qty-minus-edit">−</button>
+                  <input type="number" class="form-control text-center" id="new-quantity" min="1" max="80" value="${currentQuantity}" required />
+                  <button type="button" class="btn btn-outline-secondary" id="qty-plus-edit">+</button>
+                </div>
+                <small class="text-muted">max: 80</small>
+              </div>
+              <div class="modal-footer border-top">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="confirm-edit-btn">Valider</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const existing = document.getElementById('editReservationModal');
+      if (existing) existing.remove();
+
+      document.body.insertAdjacentHTML('beforeend', modalHTML);
+      const modal = new bootstrap.Modal(document.getElementById('editReservationModal'));
+      modal.show();
+
+      // Configurer les contrôles
+      const qtyInput = document.getElementById('new-quantity');
+      document.getElementById('qty-minus-edit').addEventListener('click', function() {
+        const val = parseInt(qtyInput.value);
+        if (val > 1) qtyInput.value = val - 1;
+      });
+
+      document.getElementById('qty-plus-edit').addEventListener('click', function() {
+        const val = parseInt(qtyInput.value);
+        if (val < 80) qtyInput.value = val + 1;
+      });
+
+      document.getElementById('confirm-edit-btn').addEventListener('click', async function() {
+        const newQuantity = document.getElementById('new-quantity').value;
+        await updateReservation(reservationId, newQuantity, modal);
+      });
+    }
+
+    // Mettre à jour une réservation
+    async function updateReservation(reservationId, newQuantity, modal) {
+      try {
+        const formData = new FormData();
+        formData.append('action', 'update');
+        formData.append('id', reservationId);
+        formData.append('quantite', newQuantity);
+
+        const response = await fetch(`${API_BASE}/reservations.php`, {
+          method: 'POST',
+          credentials: 'include',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          showAlert('success', 'Réservation mise à jour avec succès');
+          modal.hide();
+          // Recharger la page pour mettre à jour l'affichage
+          setTimeout(() => {
+            location.reload();
+          }, 1500);
+        } else {
+          showAlert('danger', result.error || 'Erreur lors de la mise à jour');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur lors de la mise à jour');
+      }
+    }
+
+    // Supprimer/Annuler une réservation
+    async function deleteReservation(reservationId) {
+      if (!confirm('Êtes-vous sûr de vouloir annuler cette réservation ?')) {
+        return;
+      }
+
+      try {
+        const formData = new FormData();
+        formData.append('action', 'delete');
+        formData.append('id', reservationId);
+
+        const response = await fetch(`${API_BASE}/reservations.php`, {
+          method: 'POST',
+          credentials: 'include',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          showAlert('success', 'Réservation annulée');
+          // Recharger la page pour mettre à jour l'affichage
+          setTimeout(() => {
+            location.reload();
+          }, 1500);
+        } else {
+          showAlert('danger', result.error || 'Erreur lors de l\'annulation');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur lors de l\'annulation');
+      }
+    }
+
+    // Gestion de la navigation des tabs
+    function initTabs() {
+      const buttons = document.querySelectorAll('[data-bs-toggle="list"]');
+      
+      if (buttons.length === 0) {
+        console.warn('Aucun bouton de tab trouvé');
+        return;
+      }
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          console.log('Click sur:', targetId);
+          
+          if (!targetId) return;
+          
+          // Masquer tous les tabs
+          document.querySelectorAll('.profile-card').forEach(tab => {
+            tab.classList.add('d-none');
+          });
+          
+          // Afficher le tab sélectionné
+          const targetTab = document.querySelector(targetId);
+          if (targetTab) {
+            console.log('Tab trouvé et affiché:', targetId);
+            targetTab.classList.remove('d-none');
+          } else {
+            console.warn('Tab non trouvé:', targetId);
+          }
+          
+          // Marquer le bouton comme actif
+          buttons.forEach(btn => {
+            btn.classList.remove('active');
+          });
+          this.classList.add('active');
+        });
+      });
+    }
+    
+    // Initialiser les tabs quand le DOM est prêt
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTabs);
+    } else {
+      initTabs();
     }
   </script>
 </body>

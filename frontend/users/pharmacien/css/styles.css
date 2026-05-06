@@ -728,6 +728,157 @@ footer hr {
   height: 1rem;
 }
 
+/* ========================================
+   CARTES DE RÉSULTATS DE RECHERCHE DE MÉDICAMENTS
+   ======================================== */
+
+.medicine-search-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-lg);
+  padding: 25px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.medicine-search-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--primary-light);
+}
+
+.medicine-header {
+  border-bottom: 2px solid var(--primary-lighter);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.medicine-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.medicine-details {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--bg-lighter);
+  border-radius: 8px;
+}
+
+.medicine-details p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.medicine-details strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.medicine-details .dosage {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.medicine-details .category {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.medicine-details .description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.pharmacies-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pharmacies-list h6 {
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.pharmacy-result-item {
+  padding: 15px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  background: var(--bg-lighter);
+  transition: var(--transition-fast);
+}
+
+.pharmacy-result-item:hover {
+  border-color: var(--primary);
+  background: var(--bg-white);
+}
+
+.pharmacy-result-item h6 {
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.pharmacy-result-item .badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+.pharmacy-result-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.quantity-badge {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: var(--text-white);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  min-width: 100px;
+}
+
+.reserve-with-pharmacy-btn {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  padding: 10px 15px;
+  font-size: 0.9rem;
+}
+
+.reserve-with-pharmacy-btn:hover {
+  background: linear-gradient(135deg, #1a7d43 0%, #15663a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 163, 86, 0.3);
+  color: var(--text-white);
+}
+
+.reserve-with-pharmacy-btn:active {
+  transform: translateY(0);
+}
+
 /* Responsive Design */
 @media (max-width: 991px) {
   .navbar-brand {
