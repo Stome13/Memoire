@@ -194,3 +194,6 @@ requireRole('pharmacie');
       }
     });
   </script>
+  <script src="js/sidebar-toggle.js"></script>
+</body>
+</html>

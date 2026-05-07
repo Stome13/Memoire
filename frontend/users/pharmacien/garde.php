@@ -180,5 +180,6 @@ if (isset($_POST['btn_annuler']) && isset($_POST['garde_id'])) {
     };
   </script>
   <?php endif; ?>
+  <script src="js/sidebar-toggle.js"></script>
 </body>
 </html>

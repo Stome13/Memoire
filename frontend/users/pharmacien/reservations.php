@@ -98,5 +98,6 @@ requireRole('pharmacie');
       alert('Marquage prêt non implémenté');
     }
   </script>
+  <script src="js/sidebar-toggle.js"></script>
 </body>
 </html>

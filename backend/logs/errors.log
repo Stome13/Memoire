@@ -1619,3 +1619,39 @@ Stack trace:
 [06-May-2026 00:19:58 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 182
 [06-May-2026 00:19:58 UTC] PHP Stack trace:
 [06-May-2026 00:19:58 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[06-May-2026 07:53:35 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php on line 99
+[06-May-2026 07:53:35 UTC] PHP Stack trace:
+[06-May-2026 07:53:35 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php:0
+[06-May-2026 07:53:35 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php on line 127
+[06-May-2026 07:53:35 UTC] PHP Stack trace:
+[06-May-2026 07:53:35 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php:0
+[06-May-2026 07:53:35 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php on line 99
+[06-May-2026 07:53:35 UTC] PHP Stack trace:
+[06-May-2026 07:53:35 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php:0
+[06-May-2026 07:53:35 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php on line 127
+[06-May-2026 07:53:35 UTC] PHP Stack trace:
+[06-May-2026 07:53:35 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\pharmacies.php:0
+[06-May-2026 07:54:25 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 150
+[06-May-2026 07:54:25 UTC] PHP Stack trace:
+[06-May-2026 07:54:25 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[06-May-2026 07:54:25 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 182
+[06-May-2026 07:54:25 UTC] PHP Stack trace:
+[06-May-2026 07:54:25 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[06-May-2026 07:54:25 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 150
+[06-May-2026 07:54:25 UTC] PHP Stack trace:
+[06-May-2026 07:54:25 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[06-May-2026 07:54:25 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 182
+[06-May-2026 07:54:25 UTC] PHP Stack trace:
+[06-May-2026 07:54:25 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[07-May-2026 08:14:02 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 150
+[07-May-2026 08:14:02 UTC] PHP Stack trace:
+[07-May-2026 08:14:02 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[07-May-2026 08:14:02 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 182
+[07-May-2026 08:14:02 UTC] PHP Stack trace:
+[07-May-2026 08:14:02 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[07-May-2026 08:14:02 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 150
+[07-May-2026 08:14:02 UTC] PHP Stack trace:
+[07-May-2026 08:14:02 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[07-May-2026 08:14:02 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 182
+[07-May-2026 08:14:02 UTC] PHP Stack trace:
+[07-May-2026 08:14:02 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
