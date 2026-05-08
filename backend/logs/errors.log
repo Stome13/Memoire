@@ -1655,3 +1655,877 @@ Stack trace:
 [07-May-2026 08:14:02 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 182
 [07-May-2026 08:14:02 UTC] PHP Stack trace:
 [07-May-2026 08:14:02 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[08-May-2026 09:02:42 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 150
+[08-May-2026 09:02:42 UTC] PHP Stack trace:
+[08-May-2026 09:02:42 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[08-May-2026 09:02:42 UTC] PHP Deprecated:  Function strftime() is deprecated in C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php on line 182
+[08-May-2026 09:02:42 UTC] PHP Stack trace:
+[08-May-2026 09:02:42 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\frontend\users\clients\index.php:0
+[08-May-2026 10:29:43 UTC] PHP Fatal error:  Uncaught ValueError: Invalid or uninitialized Zip object in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:64
+Stack trace:
+#0 C:\wamp64\www\PharmaLocal\backend\api\medicaments.php(64): ZipArchive->getFromName('xl/sharedString...')
+#1 {main}
+  thrown in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 64
+[08-May-2026 10:30:00 UTC] PHP Fatal error:  Uncaught ValueError: Invalid or uninitialized Zip object in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:64
+Stack trace:
+#0 C:\wamp64\www\PharmaLocal\backend\api\medicaments.php(64): ZipArchive->getFromName('xl/sharedString...')
+#1 {main}
+  thrown in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 64
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:37:24 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:37:24 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:37:24 UTC] PHP Stack trace:
+[08-May-2026 10:37:24 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:42:50 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:42:50 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:42:50 UTC] PHP Stack trace:
+[08-May-2026 10:42:50 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 119
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './/ss:t') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:119
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP Warning:  SimpleXMLElement::xpath(): Undefined namespace prefix in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 154
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0
+[08-May-2026 10:43:05 UTC] PHP   2. SimpleXMLElement->xpath($expression = './ss:c') C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:154
+[08-May-2026 10:43:05 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\wamp64\www\PharmaLocal\backend\api\medicaments.php on line 157
+[08-May-2026 10:43:05 UTC] PHP Stack trace:
+[08-May-2026 10:43:05 UTC] PHP   1. {main}() C:\wamp64\www\PharmaLocal\backend\api\medicaments.php:0

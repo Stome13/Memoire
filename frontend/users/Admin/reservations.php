@@ -1,7 +1,33 @@
 <?php
 require_once __DIR__ . '/../../includes/session.php';
 require_once __DIR__ . '/../../includes/helpers.php';
+require_once __DIR__ . '/../../../backend/includes/db.php';
+
 requireRole('admin');
+
+// Récupérer les réservations de la base de données
+$reservations = [];
+try {
+    $db = Database::getInstance()->getConnection();
+    $stmt = $db->prepare("
+        SELECT r.id, 
+               CONCAT(u.prenom, ' ', u.nom) AS client_name, 
+               p.nom AS pharmacy_name, 
+               m.nom AS medicine_name, 
+               r.quantite,
+               r.statut, 
+               r.date_reservation
+        FROM reservations r
+        LEFT JOIN users u ON r.user_id = u.id
+        LEFT JOIN medicaments m ON r.medicament_id = m.id
+        LEFT JOIN pharmacies p ON r.pharmacie_id = p.id
+        ORDER BY r.date_reservation DESC
+    ");
+    $stmt->execute();
+    $reservations = $stmt->fetchAll();
+} catch (Exception $e) {
+    error_log("Erreur lors de la récupération des réservations: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,13 +56,40 @@ requireRole('admin');
               <th>Client</th>
               <th>Pharmacie</th>
               <th>Médicament</th>
+              <th>Quantité</th>
               <th>Date</th>
               <th>Statut</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody id="reservationsTableBody">
-            <tr><td colspan="7" class="text-center">Chargement...</td></tr>
+          <tbody>
+            <?php if (count($reservations) > 0): ?>
+              <?php foreach ($reservations as $res): ?>
+                <tr>
+                  <td><?php echo htmlspecialchars($res['id']); ?></td>
+                  <td><?php echo htmlspecialchars($res['client_name'] ?? 'N/A'); ?></td>
+                  <td><?php echo htmlspecialchars($res['pharmacy_name'] ?? 'N/A'); ?></td>
+                  <td><?php echo htmlspecialchars($res['medicine_name'] ?? 'N/A'); ?></td>
+                  <td><?php echo htmlspecialchars($res['quantite'] ?? 'N/A'); ?></td>
+                  <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($res['date_reservation'] ?? 'now'))); ?></td>
+                  <td>
+                    <span class="badge bg-<?php 
+                      echo ($res['statut'] === 'confirmée' ? 'success' : 
+                           ($res['statut'] === 'annulée' ? 'danger' : 'info')); 
+                    ?>">
+                      <?php echo ucfirst(htmlspecialchars($res['statut'] ?? 'pending')); ?>
+                    </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-warning">Modifier</button>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <tr>
+                <td colspan="8" class="text-center text-muted">Aucune réservation trouvée</td>
+              </tr>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>
@@ -44,38 +97,5 @@ requireRole('admin');
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      loadReservations();
-    });
-
-    function loadReservations() {
-      fetch('/PharmaLocal/backend/api/reservations.php?action=listAll', {
-        credentials: 'include'
-      })
-      .then(response => response.json())
-      .then(data => {
-        const tbody = document.getElementById('reservationsTableBody');
-        if (data.success && data.reservations && data.reservations.length > 0) {
-          tbody.innerHTML = data.reservations.map(res => `
-            <tr>
-              <td>${res.id}</td>
-              <td>${res.client_name || 'N/A'}</td>
-              <td>${res.pharmacy_name || 'N/A'}</td>
-              <td>${res.medicine_name || 'N/A'}</td>
-              <td>${res.created_at || 'N/A'}</td>
-              <td><span class="badge bg-info">${res.status || 'pending'}</span></td>
-              <td>
-                <button class="btn btn-sm btn-warning">Modifier</button>
-              </td>
-            </tr>
-          `).join('');
-        } else {
-          tbody.innerHTML = '<tr><td colspan="7" class="text-center">Aucune réservation trouvée</td></tr>';
-        }
-      })
-      .catch(error => console.error('Erreur:', error));
-    }
-  </script>
 </body>
 </html>

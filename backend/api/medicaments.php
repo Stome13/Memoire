@@ -24,6 +24,208 @@ try {
     $action = $_GET['action'] ?? $_POST['action'] ?? null;
 
     /**
+     * POST - Importer des médicaments depuis un fichier
+     */
+    if ($action === 'import' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Aucun fichier fourni']);
+            exit;
+        }
+
+        $file = $_FILES['file'];
+        $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $tmpPath = $file['tmp_name'];
+        $extractedData = [];
+
+        try {
+            // Traiter les fichiers CSV
+            if ($fileExt === 'csv') {
+                if (!file_exists($tmpPath)) {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'error' => 'Fichier introuvable']);
+                    exit;
+                }
+
+                $handle = fopen($tmpPath, 'r');
+                if (!$handle) {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'error' => 'Impossible de lire le fichier CSV']);
+                    exit;
+                }
+
+                $header = null;
+                $rowCount = 0;
+                
+                while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                    if ($header === null) {
+                        $header = $row;
+                        continue;
+                    }
+                    
+                    $rowCount++;
+                    if (!empty($row[0])) {
+                        $extractedData[] = [
+                            'nom' => trim($row[0] ?? ''),
+                            'dosage' => trim($row[1] ?? ''),
+                            'categorie' => trim($row[2] ?? ''),
+                            'prix' => floatval($row[3] ?? 0),
+                            'quantite' => intval($row[4] ?? 0)
+                        ];
+                    }
+                }
+                fclose($handle);
+
+                if (!empty($extractedData)) {
+                    http_response_code(200);
+                    echo json_encode([
+                        'success' => true,
+                        'message' => count($extractedData) . ' médicament(s) trouvé(s)',
+                        'data' => $extractedData[0],
+                        'total' => count($extractedData)
+                    ]);
+                } else {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'error' => 'Aucune donnée valide trouvée dans le fichier CSV']);
+                }
+                exit;
+            }
+            // Traiter les fichiers Excel (.xlsx)
+            else if ($fileExt === 'xlsx') {
+                if (!class_exists('ZipArchive')) {
+                    http_response_code(500);
+                    echo json_encode(['success' => false, 'error' => 'Extension ZipArchive non disponible']);
+                    exit;
+                }
+
+                $zip = new ZipArchive();
+                $zipResult = $zip->open($tmpPath);
+                
+                if ($zipResult !== true) {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'error' => 'Fichier Excel invalide']);
+                    exit;
+                }
+
+                // Lire les chaînes partagées
+                $sharedStrings = [];
+                $stringsXml = $zip->getFromName('xl/sharedStrings.xml');
+                
+                if ($stringsXml !== false) {
+                    libxml_use_internal_errors(true);
+                    $stringsDoc = simplexml_load_string($stringsXml);
+                    libxml_use_internal_errors(false);
+                    
+                    if ($stringsDoc !== false) {
+                        // Récupérer tous les éléments 'si' sans namespace
+                        foreach ($stringsDoc->children() as $si) {
+                            // Chercher l'élément 't' dans les enfants
+                            foreach ($si->children() as $t) {
+                                if (strpos((string)$t->getName(), 't') !== false) {
+                                    $sharedStrings[] = (string)$t;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Lire la feuille Excel
+                $xml = $zip->getFromName('xl/worksheets/sheet1.xml');
+                $zip->close();
+                
+                if ($xml === false) {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'error' => 'Impossible de lire les données Excel']);
+                    exit;
+                }
+
+                libxml_use_internal_errors(true);
+                $doc = simplexml_load_string($xml);
+                libxml_use_internal_errors(false);
+                
+                if ($doc === false) {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'error' => 'Format Excel invalide']);
+                    exit;
+                }
+
+                $isFirstRow = true;
+                foreach ($doc->children() as $sheetData) {
+                    if (strpos((string)$sheetData->getName(), 'sheetData') === false) continue;
+                    
+                    foreach ($sheetData->children() as $row) {
+                        if (strpos((string)$row->getName(), 'row') === false) continue;
+                        
+                        if ($isFirstRow) {
+                            $isFirstRow = false;
+                            continue; // Ignorer les en-têtes
+                        }
+
+                        $rowData = [];
+                        
+                        foreach ($row->children() as $cell) {
+                            if (strpos((string)$cell->getName(), 'c') === false) continue;
+                            
+                            $cellType = (string)$cell['t'];
+                            $cellValue = '';
+                            
+                            // Récupérer la valeur
+                            foreach ($cell->children() as $v) {
+                                if (strpos((string)$v->getName(), 'v') !== false) {
+                                    $cellValue = (string)$v;
+                                    break;
+                                }
+                            }
+                            
+                            // Si c'est une string partagée, la récupérer
+                            if ($cellType === 's' && isset($sharedStrings[(int)$cellValue])) {
+                                $rowData[] = $sharedStrings[(int)$cellValue];
+                            } else {
+                                $rowData[] = $cellValue;
+                            }
+                        }
+
+                        if (!empty($rowData[0])) {
+                            $extractedData[] = [
+                                'nom' => trim($rowData[0] ?? ''),
+                                'dosage' => trim($rowData[1] ?? ''),
+                                'categorie' => trim($rowData[2] ?? ''),
+                                'prix' => floatval($rowData[3] ?? 0),
+                                'quantite' => intval($rowData[4] ?? 0)
+                            ];
+                        }
+                    }
+                }
+
+                if (!empty($extractedData)) {
+                    http_response_code(200);
+                    echo json_encode([
+                        'success' => true,
+                        'message' => count($extractedData) . ' médicament(s) trouvé(s)',
+                        'data' => $extractedData[0],
+                        'total' => count($extractedData)
+                    ]);
+                } else {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'error' => 'Aucune donnée valide trouvée dans le fichier Excel. Le fichier doit avoir au moins 2 lignes (en-têtes + données).']);
+                }
+                exit;
+            }
+            // Formats non supportés
+            else {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Format .' . $fileExt . ' non supporté. Utilisez Excel (.xlsx) ou CSV.']);
+                exit;
+            }
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'error' => 'Erreur serveur: ' . $e->getMessage()]);
+            exit;
+        }
+    }
+
+    /**
      * GET - Récupérer tous les médicaments
      */
     if ($action === 'list' && $_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -64,7 +266,12 @@ try {
             $stmt = $conn->prepare($query);
             $stmt->execute([$pharmacie_id]);
         } else {
-            $query = 'SELECT m.*, 0 AS quantite FROM medicaments m ORDER BY m.nom ASC';
+            // Admin - Afficher la somme des stocks de toutes les pharmacies
+            $query = 'SELECT m.*, COALESCE(SUM(s.quantite), 0) AS quantite
+                      FROM medicaments m
+                      LEFT JOIN stocks s ON m.id = s.medicament_id
+                      GROUP BY m.id
+                      ORDER BY m.nom ASC';
             $stmt = $conn->prepare($query);
             $stmt->execute();
         }

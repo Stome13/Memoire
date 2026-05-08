@@ -83,9 +83,13 @@ requireRole('pharmacie');
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-info" id="btnImport">
+              <i class="fas fa-file-import me-2"></i>Importer
+            </button>
             <button type="submit" class="btn btn-primary">Enregistrer</button>
           </div>
         </form>
+        <input type="file" id="importFile" style="display: none;" accept=".xlsx,.xls,.csv" />
       </div>
     </div>
   </div>
@@ -192,7 +196,76 @@ requireRole('pharmacie');
       if (form) {
         form.addEventListener('submit', handleAddMedicine);
       }
+
+      // Gérer le bouton d'import
+      const btnImport = document.getElementById('btnImport');
+      const importFile = document.getElementById('importFile');
+      
+      if (btnImport) {
+        btnImport.addEventListener('click', () => {
+          importFile.click();
+        });
+      }
+
+      if (importFile) {
+        importFile.addEventListener('change', handleFileImport);
+      }
     });
+
+    // Gérer l'import de fichiers
+    async function handleFileImport(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('action', 'import');
+      formData.append('file', file);
+
+      try {
+        const response = await fetch('/PharmaLocal/backend/api/medicaments.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        // Vérifier le contenu de la réponse
+        const text = await response.text();
+        
+        if (!text) {
+          showAlert('danger', 'Erreur: Réponse vide du serveur');
+          return;
+        }
+
+        let result;
+        try {
+          result = JSON.parse(text);
+        } catch (e) {
+          showAlert('danger', 'Erreur: Réponse invalide du serveur - ' + text.substring(0, 100));
+          return;
+        }
+
+        if (result.success) {
+          // Remplir le formulaire avec les données importées
+          const form = document.getElementById('addMedicineForm');
+          if (result.data) {
+            if (result.data.nom) form.querySelector('[name="nom"]').value = result.data.nom;
+            if (result.data.dosage) form.querySelector('[name="dosage"]').value = result.data.dosage;
+            if (result.data.categorie) form.querySelector('[name="categorie"]').value = result.data.categorie;
+            if (result.data.prix) form.querySelector('[name="prix"]').value = result.data.prix;
+            if (result.data.description) form.querySelector('[name="description"]').value = result.data.description;
+            if (result.data.quantite) form.querySelector('[name="quantite"]').value = result.data.quantite;
+          }
+          showAlert('success', result.message || 'Données importées avec succès');
+        } else {
+          showAlert('danger', result.error || 'Erreur lors de l\'import');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur lors de l\'import: ' + error.message);
+      }
+
+      // Réinitialiser le fichier pour permettre une nouvelle sélection du même fichier
+      event.target.value = '';
+    }
   </script>
   <script src="js/sidebar-toggle.js"></script>
 </body>

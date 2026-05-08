@@ -76,7 +76,7 @@ requireRole('pharmacie');
               </td>
               <td>
                 ${res.statut === 'en attente' ? '<button class="btn btn-sm btn-success" onclick="confirmReservation(' + res.id + ')">Confirmer</button>' : ''}
-                ${res.statut === 'confirmée' ? '<button class="btn btn-sm btn-info" onclick="markReady(' + res.id + ')">Prête</button>' : ''}
+                ${res.statut === 'confirmée' ? '<button class="btn btn-sm btn-primary" onclick="markWithdrawn(' + res.id + ')">Retirer</button>' : ''}
               </td>
             </tr>
           `).join('');
@@ -91,11 +91,52 @@ requireRole('pharmacie');
     }
 
     function confirmReservation(id) {
-      alert('Confirmation non implémentée');
+      updateReservationStatus(id, 'confirmée', 'Réservation confirmée');
     }
 
-    function markReady(id) {
-      alert('Marquage prêt non implémenté');
+    function markWithdrawn(id) {
+      updateReservationStatus(id, 'retirée', 'Réservation marquée comme retirée');
+    }
+
+    function updateReservationStatus(id, newStatus, message) {
+      if (!confirm('Êtes-vous sûr?')) return;
+
+      fetch('/PharmaLocal/backend/api/reservations.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `action=updateStatus&id=${id}&statut=${newStatus}`,
+        credentials: 'include'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          showAlert('success', message);
+          loadReservations();
+        } else {
+          showAlert('danger', data.error || 'Erreur lors de la mise à jour');
+        }
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur de connexion');
+      });
+    }
+
+    function showAlert(type, message) {
+      const alertHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show mt-3" role="alert">
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      `;
+      const container = document.querySelector('.dashboard-header');
+      container.insertAdjacentHTML('afterend', alertHTML);
+      
+      setTimeout(() => {
+        document.querySelector('.alert')?.remove();
+      }, 5000);
     }
   </script>
   <script src="js/sidebar-toggle.js"></script>

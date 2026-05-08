@@ -223,6 +223,55 @@ else if ($action === 'listByPharmacy') {
     ]);
 }
 
+// METTRE À JOUR LE STATUT D'UNE RÉSERVATION (PHARMACIEN)
+else if ($action === 'updateStatus') {
+    if (($_SESSION['user_role'] ?? '') !== 'pharmacie') {
+        jsonResponse(['success' => false, 'error' => 'Accès réservé aux pharmaciens'], 403);
+    }
+
+    $reservation_id = getPost('id');
+    $new_statut = getPost('statut');
+
+    if (empty($reservation_id) || empty($new_statut)) {
+        jsonResponse(['success' => false, 'error' => 'Données manquantes'], 400);
+    }
+
+    // Valider le statut
+    $valid_statuts = ['en attente', 'confirmée', 'prête', 'retirée', 'annulée'];
+    if (!in_array($new_statut, $valid_statuts)) {
+        jsonResponse(['success' => false, 'error' => 'Statut invalide'], 400);
+    }
+
+    $db = Database::getInstance()->getConnection();
+    
+    // Vérifier que la réservation appartient à la pharmacie du pharmacien connecté
+    $stmt = $db->prepare("
+        SELECT r.id FROM reservations r
+        JOIN pharmacies p ON r.pharmacie_id = p.id
+        WHERE r.id = ? AND p.pharmacien_id = ?
+    ");
+    $stmt->execute([$reservation_id, $_SESSION['user_id']]);
+    
+    if (!$stmt->fetch()) {
+        jsonResponse(['success' => false, 'error' => 'Réservation non trouvée'], 404);
+    }
+
+    // Mettre à jour le statut
+    $date_retrait = ($new_statut === 'retirée') ? date('Y-m-d H:i:s') : null;
+    
+    if ($date_retrait) {
+        $stmt = $db->prepare("UPDATE reservations SET statut = ?, date_retrait = ? WHERE id = ?");
+        $stmt->execute([$new_statut, $date_retrait, $reservation_id]);
+    } else {
+        $stmt = $db->prepare("UPDATE reservations SET statut = ? WHERE id = ?");
+        $stmt->execute([$new_statut, $reservation_id]);
+    }
+
+    logAction($_SESSION['user_id'], 'reservation_status_updated', ['reservation_id' => $reservation_id, 'new_statut' => $new_statut]);
+
+    jsonResponse(['success' => true, 'message' => 'Statut mis à jour']);
+}
+
 // ANNULER UNE RÉSERVATION
 else if ($action === 'cancel') {
     $reservation_id = getPost('reservation_id');
