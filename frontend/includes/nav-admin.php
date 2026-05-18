@@ -4,7 +4,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 ?>
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="dashboard.php">PharmaGarde Admin</a>
+    <a class="navbar-brand" href="dashboard.php"><img src="../../images/logo.png" alt="PharmaGarde" class="logo-nav me-2" style="height: 40px; display: inline-block;"> PharmaGarde Admin</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav" aria-controls="adminNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

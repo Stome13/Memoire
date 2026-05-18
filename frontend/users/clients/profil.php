@@ -15,7 +15,8 @@ try {
     $db = Database::getInstance()->getConnection();
     $stmt = $db->prepare("
         SELECT r.id, r.quantite, r.date_reservation, r.statut,
-               m.nom as medicament_nom, m.dosage, m.categorie, p.nom as pharmacie_nom
+               m.nom as medicament_nom, m.dosage, m.categorie, m.prix as medicament_prix,
+               p.nom as pharmacie_nom, p.adresse as pharmacie_adresse, p.ville as pharmacie_ville
         FROM reservations r
         JOIN medicaments m ON r.medicament_id = m.id
         JOIN pharmacies p ON r.pharmacie_id = p.id
@@ -317,6 +318,10 @@ try {
                             <i class="fas fa-map-marker-alt me-1"></i>
                             <?php echo escape($reservation['pharmacie_nom']); ?>
                           </p>
+                          <p class="text-muted small mb-0">
+                            <i class="fas fa-home me-1"></i>
+                            <?php echo escape($reservation['pharmacie_adresse'] ?? '-'); ?>, <?php echo escape($reservation['pharmacie_ville'] ?? '-'); ?>
+                          </p>
                         </div>
                         <span class="reservation-status <?php echo $statusClass; ?>">
                           <?php echo ucfirst($reservation['statut']); ?>
@@ -326,11 +331,13 @@ try {
                       <div class="row">
                         <div class="col-md-6">
                           <p class="small mb-2"><strong>Quantité:</strong> <?php echo $reservation['quantite']; ?></p>
-                          <p class="small mb-0"><strong>Date:</strong> <?php echo date('d/m/Y', strtotime($reservation['date_reservation'])); ?></p>
+                          <p class="small mb-2"><strong>Date:</strong> <?php echo date('d/m/Y', strtotime($reservation['date_reservation'])); ?></p>
+                          <p class="small mb-0"><strong>Dosage:</strong> <?php echo escape($reservation['dosage'] ?? '-'); ?></p>
                         </div>
                         <div class="col-md-6">
-                          <p class="small mb-2"><strong>Dosage:</strong> <?php echo escape($reservation['dosage'] ?? '-'); ?></p>
-                          <p class="small mb-0"><strong>Catégorie:</strong> <?php echo escape($reservation['categorie'] ?? '-'); ?></p>
+                          <p class="small mb-2"><strong>Catégorie:</strong> <?php echo escape($reservation['categorie'] ?? '-'); ?></p>
+                          <p class="small mb-2"><strong>Prix unitaire:</strong> <span class="text-primary fw-bold"><?php echo $reservation['medicament_prix'] ? number_format($reservation['medicament_prix'], 0, '.', '') . ' FCFA' : '-'; ?></span></p>
+                          <p class="small mb-0"><strong>Prix total:</strong> <span class="text-success fw-bold"><?php echo $reservation['medicament_prix'] ? number_format($reservation['quantite'] * $reservation['medicament_prix'], 0, '.', '') . ' FCFA' : '-'; ?></span></p>
                         </div>
                       </div>
                       
@@ -535,8 +542,14 @@ try {
     document.getElementById('changePasswordForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
+      const oldPassword = document.getElementById('oldPassword').value;
       const newPassword = document.getElementById('newPassword').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (!oldPassword || !newPassword || !confirmPassword) {
+        showAlert('danger', 'Veuillez remplir tous les champs');
+        return;
+      }
 
       if (newPassword !== confirmPassword) {
         showAlert('danger', 'Les mots de passe ne correspondent pas');
@@ -550,8 +563,9 @@ try {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
             action: 'changePassword',
-            oldPassword: document.getElementById('oldPassword').value,
-            newPassword: newPassword
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+            confirmPassword: confirmPassword
           })
         });
 

@@ -158,6 +158,12 @@ $loginMessage = getLoginMessage();
                       <i class="fas fa-sign-in-alt me-2"></i>Connexion
                     </button>
 
+                    <div class="text-center mb-3">
+                      <a href="mot-de-passe-oublie.php" class="text-primary text-decoration-none">
+                        <i class="fas fa-key me-1"></i>Mot de passe oublié?
+                      </a>
+                    </div>
+
                     <p class="text-center nav-auth">
                       Vous n'avez de compte? <a href="inscription.php">S'inscrire</a>
                     </p>

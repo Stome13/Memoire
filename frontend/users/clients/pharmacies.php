@@ -80,12 +80,18 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
                 <h5 class="pharmacy-name"><?php echo htmlspecialchars($pharmacie['nom']); ?></h5>
                 <div class="pharmacy-detail">
                   <i class="fas fa-map-marker-alt"></i>
-                  <span><?php echo htmlspecialchars($pharmacie['adresse']); ?></span>
+                  <span><?php echo htmlspecialchars($pharmacie['adresse']); ?><?php if ($pharmacie['ville']): ?>, <?php echo htmlspecialchars($pharmacie['ville']); ?><?php endif; ?></span>
                 </div>
                 <div class="pharmacy-detail">
                   <i class="fas fa-phone"></i>
                   <a href="tel:<?php echo htmlspecialchars($pharmacie['telephone']); ?>"><?php echo htmlspecialchars($pharmacie['telephone']); ?></a>
                 </div>
+                <?php if ($pharmacie['ifu']): ?>
+                <div class="pharmacy-detail">
+                  <i class="fas fa-id-card"></i>
+                  <span><?php echo htmlspecialchars($pharmacie['ifu']); ?></span>
+                </div>
+                <?php endif; ?>
                 <?php if ($gardeToday): ?>
                 <div class="pharmacy-detail">
                   <i class="fas fa-clock"></i>

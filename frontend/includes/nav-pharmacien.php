@@ -5,9 +5,10 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
 ?>
 <!-- Navigation Top -->
 <nav class="navbar navbar-expand-lg navbar-light pharmacien-navbar sticky-top">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="../clients/index.php">
-      <i class="fas fa-hospital me-2"></i>PharmaGarde
+      <img src="../../images/logo.png" alt="PharmaGarde" class="logo-nav me-2" style="height: 40px; display: inline-block;">
+      PharmaGarde
     </a>
     
     <!-- Menu Toggle Button pour mobile - À droite -->

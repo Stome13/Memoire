@@ -304,11 +304,12 @@ function showSuccessAlert(message) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Load pharmacies on home page
-  if (document.getElementById('pharmaciesList')) {
-    const limited = PHARMACIES_DATA.slice(0, 3);
-    document.getElementById('pharmaciesList').innerHTML = limited.map(pharmacy => createPharmacyCard(pharmacy)).join('');
-  }
+  // Load pharmacies on home page - COMMENTED OUT to use PHP-generated content
+  // The pharmacies are now loaded from the backend PHP logic in index.php
+  // if (document.getElementById('pharmaciesList')) {
+  //   const limited = PHARMACIES_DATA.slice(0, 3);
+  //   document.getElementById('pharmaciesList').innerHTML = limited.map(pharmacy => createPharmacyCard(pharmacy)).join('');
+  // }
 
   // Setup form validation
   setupFormValidation();

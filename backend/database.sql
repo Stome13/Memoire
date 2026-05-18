@@ -29,6 +29,7 @@ CREATE TABLE pharmacies (
     telephone VARCHAR(20),
     email VARCHAR(150),
     ville VARCHAR(100),
+    ifu VARCHAR(50),
     horaire_ouverture TIME,
     horaire_fermeture TIME,
     pharmacien_id INT,

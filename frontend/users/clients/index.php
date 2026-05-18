@@ -97,101 +97,126 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
           require_once __DIR__ . '/../../../backend/includes/db.php';
           $db = Database::getInstance()->getConnection();
           $today = date('Y-m-d');
-          $stmt = $db->query('SELECT * FROM pharmacies');
-          $pharmacies = $stmt->fetchAll();
-          foreach ($pharmacies as $pharmacie):
-            // Vérifier si la pharmacie est de garde aujourd'hui
-            $stmtGarde = $db->prepare('SELECT * FROM gardes WHERE pharmacie_id = ? AND date_garde = ?');
-            $stmtGarde->execute([$pharmacie['id'], $today]);
-            $gardeToday = $stmtGarde->fetch();
-            // Prochaines gardes
-            $stmtNextGarde = $db->prepare('SELECT * FROM gardes WHERE pharmacie_id = ? AND date_garde >= ? ORDER BY date_garde ASC, heure_debut ASC');
-            $stmtNextGarde->execute([$pharmacie['id'], $today]);
-            $gardes = $stmtNextGarde->fetchAll();
-          ?>
-          <div class="col-md-6 col-lg-4">
-            <div class="pharmacy-card">
-              <?php if ($gardeToday): ?>
-              <span class="pharmacy-badge">
-                <i class="fas fa-shield-alt"></i>De Garde
-              </span>
-              <?php endif; ?>
-              <div class="pharmacy-info">
-                <h5 class="pharmacy-name"><?php echo htmlspecialchars($pharmacie['nom']); ?></h5>
-                <div class="pharmacy-detail">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span><?php echo htmlspecialchars($pharmacie['adresse']); ?></span>
-                </div>
-                <div class="pharmacy-detail">
-                  <i class="fas fa-phone"></i>
-                  <a href="tel:<?php echo htmlspecialchars($pharmacie['telephone']); ?>"><?php echo htmlspecialchars($pharmacie['telephone']); ?></a>
-                </div>
+          
+          try {
+            // Récupérer les pharmacies de garde aujourd'hui
+            $stmtGardeList = $db->prepare('
+              SELECT p.* FROM pharmacies p
+              INNER JOIN gardes g ON p.id = g.pharmacie_id AND g.date_garde = ?
+              ORDER BY p.nom ASC
+            ');
+            $stmtGardeList->execute([$today]);
+            $pharmaciesGarde = $stmtGardeList->fetchAll();
+            
+            $gardeCount = count($pharmaciesGarde);
+            $pharmacies = [];
+            
+            // Ajouter les pharmacies de garde
+            $pharmacies = array_merge($pharmacies, array_slice($pharmaciesGarde, 0, 3));
+            
+            // Si moins de 3 pharmacies de garde, ajouter des pharmacies sans garde
+            if ($gardeCount < 3) {
+              $needCount = 3 - $gardeCount;
+              $stmtNonGarde = $db->prepare('
+                SELECT p.* FROM pharmacies p
+                WHERE p.id NOT IN (SELECT pharmacie_id FROM gardes WHERE date_garde = ?)
+                ORDER BY p.nom ASC
+                LIMIT ' . intval($needCount) . '
+              ');
+              $stmtNonGarde->execute([$today]);
+              $pharmaciesNonGarde = $stmtNonGarde->fetchAll();
+              $pharmacies = array_merge($pharmacies, $pharmaciesNonGarde);
+            }
+            
+            foreach ($pharmacies as $pharmacie):
+              // Vérifier si la pharmacie est de garde aujourd'hui
+              $stmtGarde = $db->prepare('SELECT * FROM gardes WHERE pharmacie_id = ? AND date_garde = ?');
+              $stmtGarde->execute([$pharmacie['id'], $today]);
+              $gardeToday = $stmtGarde->fetch();
+              // Prochaines gardes
+              $stmtNextGarde = $db->prepare('SELECT * FROM gardes WHERE pharmacie_id = ? AND date_garde >= ? ORDER BY date_garde ASC, heure_debut ASC');
+              $stmtNextGarde->execute([$pharmacie['id'], $today]);
+              $gardes = $stmtNextGarde->fetchAll();
+            ?>
+            <div class="col-md-6 col-lg-4">
+              <div class="pharmacy-card">
                 <?php if ($gardeToday): ?>
-                <div class="pharmacy-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>24h/24 (Garde)</span>
-                </div>                <div class="pharmacy-rating">
-                  <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
+                <span class="pharmacy-badge">
+                  <i class="fas fa-shield-alt"></i>De Garde
+                </span>
+                <?php endif; ?>
+                <div class="pharmacy-info">
+                  <h5 class="pharmacy-name"><?php echo htmlspecialchars($pharmacie['nom']); ?></h5>
+                  <div class="pharmacy-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><?php echo htmlspecialchars($pharmacie['adresse']); ?><?php if ($pharmacie['ville']): ?>, <?php echo htmlspecialchars($pharmacie['ville']); ?><?php endif; ?></span>
                   </div>
-                  <span class="score">4.5</span>
-                  <span class="text-muted ms-3" style="font-size: 0.85rem;">0.8 km</span>
-                </div>
-                <?php endif; ?>
-
-                <p class="pharmacy-insurance">Mutuelle de santé, Assurance entreprise, ...</p>
-                <?php if ($gardes && isset($gardes[0])): ?>
-                <div class="pharmacy-detail" style="color: var(--danger);">
-                  <i class="fas fa-hourglass-half"></i>
-                  <span>Prochaine garde: <?php echo ucfirst(strftime('%A %d/%m', strtotime($gardes[0]['date_garde']))); ?> jusqu'à <?php echo substr($gardes[0]['heure_fin'],0,5); ?></span>
-                </div>
-                <?php endif; ?>
-                <div class="pharmacy-actions">
-                  <a href="pharmacies.php" class="btn btn-primary">Voir détails</a>
-                  <a href="#" class="btn btn-outline-primary">Produits</a>
-                </div>
-                <div class="d-flex gap-2 mt-2">
-                  <button class="btn btn-sm btn-outline-danger flex-fill" data-bs-toggle="modal" data-bs-target="#gardeModal<?php echo $pharmacie['id']; ?>">
-                    <i class="fas fa-calendar-alt me-1"></i>Voir jours de garde
-                  </button>
-                  <a href="https://www.google.com/maps/search/<?php echo urlencode($pharmacie['nom'] . ' ' . $pharmacie['adresse']); ?>" target="_blank" class="btn btn-sm btn-outline-secondary flex-fill">
-                    <i class="fas fa-map-marked-alt me-1"></i>Localisation
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Modal Jours de Garde -->
-          <div class="modal fade" id="gardeModal<?php echo $pharmacie['id']; ?>" tabindex="-1" aria-labelledby="gardeModalLabel<?php echo $pharmacie['id']; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="gardeModalLabel<?php echo $pharmacie['id']; ?>">Jours de garde - <?php echo htmlspecialchars($pharmacie['nom']); ?></h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <?php if ($gardes): ?>
-                    <ul class="list-group">
-                      <?php foreach ($gardes as $garde): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                          <span><strong><?php echo ucfirst(strftime('%A %d/%m/%Y', strtotime($garde['date_garde']))); ?></strong></span>
-                          <span class="badge bg-primary rounded-pill"><?php echo substr($garde['heure_debut'],0,5); ?> - <?php echo substr($garde['heure_fin'],0,5); ?></span>
-                        </li>
-                      <?php endforeach; ?>
-                    </ul>
-                  <?php else: ?>
-                    <p class="text-muted text-center">Aucune garde à venir.</p>
+                  <div class="pharmacy-detail">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:<?php echo htmlspecialchars($pharmacie['telephone']); ?>"><?php echo htmlspecialchars($pharmacie['telephone']); ?></a>
+                  </div>
+                  <?php if ($pharmacie['ifu']): ?>
+                  <div class="pharmacy-detail">
+                    <i class="fas fa-id-card"></i>
+                    <span><?php echo htmlspecialchars($pharmacie['ifu']); ?></span>
+                  </div>
                   <?php endif; ?>
+                  <?php if ($gardeToday): ?>
+                  <div class="pharmacy-detail">
+                    <i class="fas fa-clock"></i>
+                    <span>24h/24 (Garde)</span>
+                  </div>
+                  <?php endif; ?>
+                  <p class="pharmacy-insurance">Mutuelle de santé, Assurance entreprise, ...</p>
+                  <?php if ($gardes && isset($gardes[0])): ?>
+                  <div class="pharmacy-detail" style="color: var(--success);">
+                    <i class="fas fa-hourglass-half"></i>
+                    <span>Prochaine garde: <?php echo ucfirst(strftime('%A %d/%m', strtotime($gardes[0]['date_garde']))); ?> de <?php echo substr($gardes[0]['heure_debut'],0,5); ?> à <?php echo substr($gardes[0]['heure_fin'],0,5); ?></span>
+                  </div>
+                  <?php endif; ?>
+                  <div class="d-flex gap-2 mt-2">
+                    <button class="btn btn-sm btn-success flex-fill" data-bs-toggle="modal" data-bs-target="#gardeModal<?php echo $pharmacie['id']; ?>">
+                      <i class="fas fa-calendar-alt me-1"></i>Voir jours de garde
+                    </button>
+                    <a href="https://www.google.com/maps/search/<?php echo urlencode($pharmacie['nom'] . ' ' . $pharmacie['adresse']); ?>" target="_blank" class="btn btn-sm btn-outline-secondary flex-fill">
+                      <i class="fas fa-map-marked-alt me-1"></i>Localisation
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <?php endforeach; ?>
+
+            <!-- Modal Jours de Garde -->
+            <div class="modal fade" id="gardeModal<?php echo $pharmacie['id']; ?>" tabindex="-1" aria-labelledby="gardeModalLabel<?php echo $pharmacie['id']; ?>" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="gardeModalLabel<?php echo $pharmacie['id']; ?>">Jours de garde - <?php echo htmlspecialchars($pharmacie['nom']); ?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <?php if ($gardes): ?>
+                      <ul class="list-group">
+                        <?php foreach ($gardes as $garde): ?>
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong><?php echo ucfirst(strftime('%A %d/%m/%Y', strtotime($garde['date_garde']))); ?></strong></span>
+                            <span class="badge bg-primary rounded-pill"><?php echo substr($garde['heure_debut'],0,5); ?> - <?php echo substr($garde['heure_fin'],0,5); ?></span>
+                          </li>
+                        <?php endforeach; ?>
+                      </ul>
+                    <?php else: ?>
+                      <p class="text-muted text-center">Aucune garde à venir.</p>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endforeach; ?>
+          <?php } catch (Exception $e) {
+            error_log('Erreur affichage pharmacies: ' . $e->getMessage());
+            echo '<div class="col-12"><div class="alert alert-danger">Erreur lors du chargement des pharmacies</div></div>';
+          }
+          ?>
         </div>
         <div class="text-center mt-5">
           <a href="pharmacies.php" class="btn btn-outline-primary btn-lg">Voir toutes les pharmacies</a>
@@ -234,7 +259,7 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
               <p>Réservez vos médicaments et récupérez-les directement à la pharmacie.</p>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-6">
             <div class="feature-card">
               <div class="feature-icon">
                 <i class="fas fa-bell"></i>
@@ -243,22 +268,13 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
               <p>Recevez des alertes sur vos réservations et les pharmacies de garde.</p>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4">
+          <div class="col-12 md-6 col-lg-6">
             <div class="feature-card">
               <div class="feature-icon">
                 <i class="fas fa-boxes"></i>
               </div>
               <h5>Gestion de stock</h5>
               <p>Les pharmaciens gèrent leurs stocks et détectent les ruptures automatiquement.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-credit-card"></i>
-              </div>
-              <h5>Paiement sécurisé</h5>
-              <p>Payez en ligne en toute sécurité ou réglez sur place.</p>
             </div>
           </div>
         </div>

@@ -30,6 +30,7 @@ requireRole('admin');
           <thead>
             <tr>
               <th>Nom</th>
+              <th>Numéro IFU</th>
               <th>Adresse</th>
               <th>Ville</th>
               <th>Téléphone</th>
@@ -62,16 +63,23 @@ requireRole('admin');
                 <input type="text" class="form-control" id="pharma-nom" name="nom" required />
               </div>
               <div class="col-md-6 mb-3">
-                <label for="pharma-ville" class="form-label">Ville</label>
-                <input type="text" class="form-control" id="pharma-ville" name="ville" />
+                <label for="pharma-ifu" class="form-label">Numéro IFU <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="pharma-ifu" name="ifu" required />
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
+                <label for="pharma-ville" class="form-label">Ville</label>
+                <input type="text" class="form-control" id="pharma-ville" name="ville" />
+              </div>
+              <div class="col-md-6 mb-3">
                 <label for="pharma-email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="pharma-email" name="email" />
               </div>
+            </div>
+
+            <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="pharma-telephone" class="form-label">Téléphone</label>
                 <input type="tel" class="form-control" id="pharma-telephone" name="telephone" />
@@ -163,6 +171,7 @@ requireRole('admin');
           tbody.innerHTML = data.pharmacies.map(pharma => `
             <tr>
               <td>${pharma.nom}</td>
+              <td>${pharma.ifu || '-'}</td>
               <td>${pharma.adresse}</td>
               <td>${pharma.ville || '-'}</td>
               <td>${pharma.telephone || '-'}</td>
@@ -175,12 +184,12 @@ requireRole('admin');
             </tr>
           `).join('');
         } else {
-          tbody.innerHTML = '<tr><td colspan="7" class="text-center">Aucune pharmacie trouvée</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="8" class="text-center">Aucune pharmacie trouvée</td></tr>';
         }
       })
       .catch(error => {
         console.error('Erreur:', error);
-        document.getElementById('pharmaciesTableBody').innerHTML = '<tr><td colspan="7" class="text-center text-danger">Erreur de chargement</td></tr>';
+        document.getElementById('pharmaciesTableBody').innerHTML = '<tr><td colspan="8" class="text-center text-danger">Erreur de chargement</td></tr>';
       });
     }
 

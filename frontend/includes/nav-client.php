@@ -6,7 +6,7 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-lg">
-    <a class="navbar-brand" href="index.php"> <i class="fas fa-hospital me-2"></i> PharmaGarde</a>
+    <a class="navbar-brand" href="index.php"><img src="../../images/logo.png" alt="PharmaGarde" class="logo-nav me-2" style="height: 40px; display: inline-block;"> PharmaGarde</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,9 +17,6 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
         </li>
         <li class="nav-item">
           <a class="nav-link <?php echo $currentPage === 'pharmacies' ? 'active' : ''; ?>" href="pharmacies.php">Pharmacies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?php echo $currentPage === 'medicaments' ? 'active' : ''; ?>" href="medicaments.php">Médicaments</a>
         </li>
         <li class="nav-item">
           <a class="nav-link cart-badge" href="#" onclick="openCartModal(); return false;">

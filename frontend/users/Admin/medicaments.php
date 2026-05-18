@@ -28,7 +28,6 @@ requireRole('admin');
             <option value="0">Toutes les pharmacies</option>
           </select>
         </div>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMedicamentModal">Ajouter un médicament</button>
       </div>
     </div>
 
@@ -55,7 +54,7 @@ requireRole('admin');
     </div>
   </main>
 
-  <!-- Modal Ajouter Médicament -->
+  Modal Ajouter Médicament
   <div class="modal fade" id="addMedicamentModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">

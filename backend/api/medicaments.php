@@ -65,12 +65,17 @@ try {
                     
                     $rowCount++;
                     if (!empty($row[0])) {
+                        // Nettoyer le prix: supprimer espaces, "FCFA", et garder juste le nombre
+                        $prix = $row[3] ?? '0';
+                        $prix = str_replace([' ', 'FCFA', 'fcfa', ',', 'F'], '', trim($prix));
+                        
                         $extractedData[] = [
                             'nom' => trim($row[0] ?? ''),
                             'dosage' => trim($row[1] ?? ''),
                             'categorie' => trim($row[2] ?? ''),
-                            'prix' => floatval($row[3] ?? 0),
-                            'quantite' => intval($row[4] ?? 0)
+                            'prix' => floatval($prix),
+                            'description' => trim($row[4] ?? ''),
+                            'quantite' => intval($row[5] ?? 0)
                         ];
                     }
                 }
@@ -81,7 +86,7 @@ try {
                     echo json_encode([
                         'success' => true,
                         'message' => count($extractedData) . ' médicament(s) trouvé(s)',
-                        'data' => $extractedData[0],
+                        'medicines' => $extractedData,
                         'total' => count($extractedData)
                     ]);
                 } else {
@@ -187,12 +192,17 @@ try {
                         }
 
                         if (!empty($rowData[0])) {
+                            // Nettoyer le prix: supprimer espaces, "FCFA", et garder juste le nombre
+                            $prix = $rowData[3] ?? '0';
+                            $prix = str_replace([' ', 'FCFA', 'fcfa', ',', 'F'], '', trim($prix));
+                            
                             $extractedData[] = [
                                 'nom' => trim($rowData[0] ?? ''),
                                 'dosage' => trim($rowData[1] ?? ''),
                                 'categorie' => trim($rowData[2] ?? ''),
-                                'prix' => floatval($rowData[3] ?? 0),
-                                'quantite' => intval($rowData[4] ?? 0)
+                                'prix' => floatval($prix),
+                                'description' => trim($rowData[4] ?? ''),
+                                'quantite' => intval($rowData[5] ?? 0)
                             ];
                         }
                     }
@@ -203,7 +213,7 @@ try {
                     echo json_encode([
                         'success' => true,
                         'message' => count($extractedData) . ' médicament(s) trouvé(s)',
-                        'data' => $extractedData[0],
+                        'medicines' => $extractedData,
                         'total' => count($extractedData)
                     ]);
                 } else {
@@ -243,7 +253,7 @@ try {
         if ($requestedPharmacieId > 0) {
             $query = 'SELECT m.*, COALESCE(s.quantite, 0) AS quantite
                       FROM medicaments m
-                      INNER JOIN stocks s ON m.id = s.medicament_id
+                      LEFT JOIN stocks s ON m.id = s.medicament_id
                       WHERE s.pharmacie_id = ?
                       ORDER BY m.nom ASC';
             $stmt = $conn->prepare($query);
@@ -260,7 +270,7 @@ try {
         if ($pharmacie_id) {
             $query = 'SELECT m.*, COALESCE(s.quantite, 0) AS quantite
                       FROM medicaments m
-                      INNER JOIN stocks s ON m.id = s.medicament_id
+                      LEFT JOIN stocks s ON m.id = s.medicament_id
                       WHERE s.pharmacie_id = ?
                       ORDER BY m.nom ASC';
             $stmt = $conn->prepare($query);
@@ -356,8 +366,8 @@ try {
 
             $medicamentId = $conn->lastInsertId();
 
-            // Si quantité > 0 et l'utilisateur est pharmacien, créer une entrée stock
-            if ($quantite > 0 && ($_SESSION['user_role'] ?? '') === 'pharmacie') {
+            // Si l'utilisateur est pharmacien, créer TOUJOURS une entrée stock (même si quantité = 0)
+            if (($_SESSION['user_role'] ?? '') === 'pharmacie') {
                 // Récupérer la pharmacie associée à ce pharmacien
                 $query = 'SELECT id FROM pharmacies WHERE pharmacien_id = ? LIMIT 1';
                 $stmt = $conn->prepare($query);
@@ -365,7 +375,7 @@ try {
                 $pharmacie = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 if ($pharmacie) {
-                    // Insérer ou mettre à jour le stock
+                    // Insérer le stock
                     $query = 'INSERT INTO stocks (pharmacie_id, medicament_id, quantite) VALUES (?, ?, ?) 
                               ON DUPLICATE KEY UPDATE quantite = ?';
                     $stmt = $conn->prepare($query);
@@ -525,6 +535,7 @@ try {
                             p.id as pharmacie_id,
                             p.nom as pharmacie_nom,
                             p.adresse as pharmacie_adresse,
+                            p.ville as pharmacie_ville,
                             p.telephone as pharmacie_telephone,
                             p.email as pharmacie_email,
                             s.quantite,

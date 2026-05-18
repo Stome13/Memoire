@@ -94,7 +94,7 @@ if ($action === 'register') {
 
 else if ($action === 'list') {
     $db = Database::getInstance()->getConnection();
-    $stmt = $db->prepare('SELECT p.id, p.nom, p.adresse, p.ville, p.telephone, p.email, p.horaire_ouverture, p.horaire_fermeture, p.pharmacien_id, 
+    $stmt = $db->prepare('SELECT p.id, p.nom, p.adresse, p.ville, p.telephone, p.email, p.ifu, p.horaire_ouverture, p.horaire_fermeture, p.pharmacien_id, 
                          CONCAT(u.prenom, " ", u.nom) AS pharmacien_nom, u.id AS user_id 
                          FROM pharmacies p 
                          LEFT JOIN users u ON p.pharmacien_id = u.id 
@@ -110,6 +110,7 @@ else if ($action === 'create') {
     requireAdmin();
 
     $nom = trim(getPost('nom'));
+    $ifu = trim(getPost('ifu'));
     $adresse = trim(getPost('adresse'));
     $ville = trim(getPost('ville'));
     $telephone = trim(getPost('telephone'));
@@ -124,8 +125,8 @@ else if ($action === 'create') {
     $pharmacien_password = getPost('pharmacien_password');
     $pharmacien_password_confirm = getPost('pharmacien_password_confirm');
 
-    if (empty($nom) || empty($adresse) || empty($pharmacien_nom) || empty($pharmacien_prenom) || empty($pharmacien_email) || empty($pharmacien_password) || empty($pharmacien_password_confirm)) {
-        jsonResponse(['success' => false, 'error' => 'Tous les champs du pharmacien sont requis'], 400);
+    if (empty($nom) || empty($ifu) || empty($adresse) || empty($pharmacien_nom) || empty($pharmacien_prenom) || empty($pharmacien_email) || empty($pharmacien_password) || empty($pharmacien_password_confirm)) {
+        jsonResponse(['success' => false, 'error' => 'Tous les champs obligatoires doivent être remplis'], 400);
     }
 
     if (!isValidEmail($pharmacien_email)) {
@@ -163,14 +164,15 @@ else if ($action === 'create') {
 
         $pharmacien_id = $db->lastInsertId();
 
-        $stmt = $db->prepare('INSERT INTO pharmacies (nom, adresse, ville, telephone, email, horaire_ouverture, horaire_fermeture, pharmacien_id, date_inscription) 
-                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+        $stmt = $db->prepare('INSERT INTO pharmacies (nom, adresse, ville, telephone, email, ifu, horaire_ouverture, horaire_fermeture, pharmacien_id, date_inscription) 
+                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
         $stmt->execute([
             $nom,
             $adresse,
             $ville ?: null,
             $telephone ?: null,
             $email ?: null,
+            $ifu,
             $horaire_ouverture ?: null,
             $horaire_fermeture ?: null,
             $pharmacien_id
@@ -186,6 +188,7 @@ else if ($action === 'create') {
             'pharmacy' => [
                 'id' => $pharmacyId,
                 'nom' => $nom,
+                'ifu' => $ifu,
                 'adresse' => $adresse,
                 'ville' => $ville,
                 'telephone' => $telephone,

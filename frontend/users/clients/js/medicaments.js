@@ -8,7 +8,7 @@ let cartItems = JSON.parse(localStorage.getItem('medicineCart')) || [];
 /**
  * Ajouter un article au panier
  */
-function addToCart(medicineId, pharmacyId, medicineName, pharmacyName, quantity) {
+function addToCart(medicineId, pharmacyId, medicineName, pharmacyName, quantity, medicinePrice = 0, pharmacyCity = 'N/A') {
   // Vérifier si l'article existe déjà
   const existingItem = cartItems.find(item => 
     item.medicineId === medicineId && item.pharmacyId === pharmacyId
@@ -22,6 +22,8 @@ function addToCart(medicineId, pharmacyId, medicineName, pharmacyName, quantity)
       pharmacyId: pharmacyId,
       medicineName: medicineName,
       pharmacyName: pharmacyName,
+      medicinePrice: parseFloat(medicinePrice) || 0,
+      pharmacyCity: pharmacyCity,
       quantity: parseInt(quantity)
     });
   }
@@ -78,7 +80,9 @@ function showCartNotification() {
 /**
  * Afficher le modal pour ajouter au panier
  */
-function openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName) {
+function openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName, medicinePrice = 0, pharmacyCity = 'N/A') {
+  const priceFormatted = medicinePrice ? parseFloat(medicinePrice).toFixed(0) + ' FCFA' : 'N/A';
+  
   const modalHTML = `
     <div class="modal fade" id="addToCartModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;">
@@ -95,9 +99,17 @@ function openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName) 
               <div class="mb-2">
                 <h6 class="fw-bold mb-0">${medicineName}</h6>
               </div>
-              <p class="text-muted small mb-0">
+              <p class="text-muted small mb-2">
                 <i class="fas fa-map-marker-alt me-1"></i>
                 ${pharmacyName}
+              </p>
+              <p class="text-muted small mb-2">
+                <i class="fas fa-city me-1"></i>
+                ${pharmacyCity}
+              </p>
+              <p class="text-primary fw-bold mb-0">
+                <i class="fas fa-tag me-1"></i>
+                Prix unitaire: ${priceFormatted}
               </p>
             </div>
 
@@ -111,6 +123,14 @@ function openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName) 
                   <button type="button" class="btn btn-outline-secondary" id="qty-plus-cart">+</button>
                 </div>
                 <small class="text-muted">max: 80</small>
+              </div>
+
+              <!-- Total Price -->
+              <div class="mb-4 p-3 bg-success bg-opacity-10 rounded">
+                <div class="d-flex justify-content-between align-items-center">
+                  <label class="form-label fw-bold mb-0">Prix total:</label>
+                  <span class="fs-5 fw-bold text-success" id="total-price-display">${priceFormatted}</span>
+                </div>
               </div>
 
               <button type="submit" class="btn btn-success btn-lg w-100">
@@ -133,17 +153,26 @@ function openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName) 
   modal.show();
 
   // Configurer les contrôles du modal
-  setupAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName, modal);
+  setupAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName, medicinePrice, pharmacyCity, modal);
 }
 
 /**
  * Configurer le modal d'ajout au panier
  */
-function setupAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName, modal) {
+function setupAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName, medicinePrice = 0, pharmacyCity = 'N/A', modal) {
   const qtyInput = document.getElementById('qty-cart');
   const qtyMinus = document.getElementById('qty-minus-cart');
   const qtyPlus = document.getElementById('qty-plus-cart');
   const form = document.getElementById('addToCartForm');
+  const totalPriceDisplay = document.getElementById('total-price-display');
+  
+  // Fonction pour mettre à jour le prix total
+  function updateTotalPrice() {
+    const quantity = parseInt(qtyInput.value) || 1;
+    const price = parseFloat(medicinePrice) || 0;
+    const totalPrice = quantity * price;
+    totalPriceDisplay.textContent = totalPrice.toFixed(0) + ' FCFA';
+  }
 
   // Bouton moins
   qtyMinus.addEventListener('click', function (e) {
@@ -151,6 +180,7 @@ function setupAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName,
     const currentQty = parseInt(qtyInput.value);
     if (currentQty > 1) {
       qtyInput.value = currentQty - 1;
+      updateTotalPrice();
     }
   });
 
@@ -160,15 +190,20 @@ function setupAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName,
     const currentQty = parseInt(qtyInput.value);
     if (currentQty < 80) {
       qtyInput.value = currentQty + 1;
+      updateTotalPrice();
     }
   });
+
+  // Mettre à jour le prix quand on change la valeur du champ
+  qtyInput.addEventListener('change', updateTotalPrice);
+  qtyInput.addEventListener('input', updateTotalPrice);
 
   // Soumettre le formulaire
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     
     const quantity = document.getElementById('qty-cart').value;
-    addToCart(medicineId, pharmacyId, medicineName, pharmacyName, quantity);
+    addToCart(medicineId, pharmacyId, medicineName, pharmacyName, quantity, medicinePrice, pharmacyCity);
     modal.hide();
   });
 }
@@ -509,6 +544,9 @@ function createMedicineSearchResultCard(medicine) {
       const gardeHTML = pharmacy.is_garde 
         ? '<span class="badge bg-danger rounded-pill ms-2"><i class="fas fa-moon"></i> Garde</span>'
         : '';
+      const locationDisplay = pharmacy.pharmacie_adresse 
+        ? `${pharmacy.pharmacie_adresse}, ${pharmacy.pharmacie_ville || 'Ville non spécifiée'}`
+        : (pharmacy.pharmacie_ville || 'Localisation non spécifiée');
       
       return `
         <div class="pharmacy-result-item">
@@ -516,7 +554,7 @@ function createMedicineSearchResultCard(medicine) {
             <div>
               <h6 class="fw-bold mb-1">${pharmacy.pharmacie_nom} ${gardeHTML}</h6>
               <p class="text-muted small mb-1">
-                <i class="fas fa-map-marker-alt"></i> ${pharmacy.pharmacie_adresse}
+                <i class="fas fa-map-marker-alt"></i> ${locationDisplay}
               </p>
               <p class="text-muted small mb-0">
                 <i class="fas fa-phone"></i> ${pharmacy.pharmacie_telephone}
@@ -532,7 +570,9 @@ function createMedicineSearchResultCard(medicine) {
                   data-medicine-id="${medicineId}" 
                   data-pharmacy-id="${pharmacy.pharmacie_id}"
                   data-medicine-name="${medicineName}"
-                  data-pharmacy-name="${pharmacy.pharmacie_nom}">
+                  data-pharmacy-name="${pharmacy.pharmacie_nom}"
+                  data-medicine-price="${medicine.prix || 0}"
+                  data-pharmacy-city="${pharmacy.pharmacie_ville || 'N/A'}">
             <i class="fas fa-calendar-check me-1"></i> Réserver
           </button>
         </div>
@@ -558,6 +598,10 @@ function createMedicineSearchResultCard(medicine) {
           <p class="dosage"><strong>Dosage:</strong> ${medicineDosage}</p>
           <p class="category"><strong>Catégorie:</strong> ${medicineCategory}</p>
           ${medicineDescription ? `<p class="description"><strong>Description:</strong> ${medicineDescription}</p>` : ''}
+          <p class="text-primary fw-bold mb-0">
+            <i class="fas fa-tag me-1"></i>
+            Prix unitaire: ${medicine.prix ? parseFloat(medicine.prix).toFixed(0) + ' FCFA' : 'N/A'}
+          </p>
         </div>
 
         <div class="pharmacies-list">
@@ -583,9 +627,11 @@ function attachReservationWithPharmacyListeners() {
       const pharmacyId = this.dataset.pharmacyId;
       const medicineName = this.dataset.medicineName;
       const pharmacyName = this.dataset.pharmacyName;
+      const medicinePrice = this.dataset.medicinePrice || 0;
+      const pharmacyCity = this.dataset.pharmacyCity || 'N/A';
       
       // Vérifier si l'utilisateur est connecté
-      checkLoginStatusAndReserve(medicineId, pharmacyId, medicineName, pharmacyName);
+      checkLoginStatusAndReserve(medicineId, pharmacyId, medicineName, pharmacyName, medicinePrice, pharmacyCity);
     });
   });
 }
@@ -593,14 +639,14 @@ function attachReservationWithPharmacyListeners() {
 /**
  * Vérifier si l'utilisateur est connecté et afficher le modal d'ajout au panier
  */
-function checkLoginStatusAndReserve(medicineId, pharmacyId, medicineName, pharmacyName) {
+function checkLoginStatusAndReserve(medicineId, pharmacyId, medicineName, pharmacyName, medicinePrice = 0, pharmacyCity = 'N/A') {
   // Vérifier le statut de connexion
   fetch('/PharmaLocal/backend/api/auth.php?action=check')
     .then(response => response.json())
     .then(data => {
       if (data.loggedIn) {
         // L'utilisateur est connecté, afficher le modal d'ajout au panier
-        openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName);
+        openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName, medicinePrice, pharmacyCity);
       } else {
         // L'utilisateur n'est pas connecté, rediriger vers la connexion
         const currentUrl = encodeURIComponent(window.location.href);

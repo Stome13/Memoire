@@ -22,7 +22,6 @@ $currentUser = getCurrentUser();
         <h1>Gestion des utilisateurs</h1>
         <p>Liste des comptes clients et administrateurs.</p>
       </div>
-      <button class="btn btn-primary">Créer un utilisateur</button>
     </div>
 
     <div class="content-wrapper">
