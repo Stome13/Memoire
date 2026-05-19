@@ -130,8 +130,8 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    linear-gradient(135deg, rgba(44, 171, 123, 0.65) 0%, rgba(34, 163, 86, 0.65) 50%, rgba(26, 125, 67, 0.65) 100%),
+    url('../../../images/hero-bg.png') center/cover no-repeat;
   z-index: 1;
 }
 
@@ -909,19 +909,13 @@ footer hr {
 
 #cart-badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
-  color: white;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
+  top: -5px;
+  right: -10px;
+  color: #e74c3c;
+  font-size: 0.9rem;
   font-weight: 700;
-  border: 2px solid white;
+  line-height: 1;
+  padding: 0;
 }
 
 .cart-item {

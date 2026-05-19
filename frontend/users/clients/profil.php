@@ -760,10 +760,29 @@ try {
     }
     
     // Initialiser les tabs quand le DOM est prêt
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initTabs);
-    } else {
+    function initializeTabsAndParams() {
       initTabs();
+      
+      // Vérifier si un paramètre 'tab' est présent dans l'URL
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab');
+      
+      if (tabParam) {
+        // Trouver et cliquer le bouton correspondant
+        const buttons = document.querySelectorAll('[data-bs-toggle="list"]');
+        buttons.forEach(button => {
+          const href = button.getAttribute('href');
+          if (href === `#${tabParam}-tab`) {
+            button.click();
+          }
+        });
+      }
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeTabsAndParams);
+    } else {
+      initializeTabsAndParams();
     }
   </script>
 </body>

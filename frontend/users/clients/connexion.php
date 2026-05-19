@@ -9,6 +9,9 @@ if (isLoggedIn()) {
 
 // Récupérer le message de login si présent
 $loginMessage = getLoginMessage();
+
+// Récupérer l'URL de redirection si présente
+$redirectUrl = isset($_GET['redirect']) ? urldecode($_GET['redirect']) : null;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -135,6 +138,7 @@ $loginMessage = getLoginMessage();
                     <p class="text-muted">Connectez-vous pour accéder à votre compte</p>
                   </div>
                   <form id="loginForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="redirect-url" value="<?php echo $redirectUrl ? htmlspecialchars($redirectUrl) : ''; ?>" />
                     <div class="mb-3">
                       <label for="login-email" class="form-label fw-bold">Email</label>
                       <input type="email" class="form-control form-control-lg" id="login-email" placeholder="votre@email.com" required />
@@ -197,6 +201,7 @@ $loginMessage = getLoginMessage();
       const email = document.getElementById('login-email').value.trim();
       const password = document.getElementById('login-password').value;
       const rememberMe = document.getElementById('remember-me').checked;
+      const redirectUrl = document.getElementById('redirect-url').value;
 
       if (!email || !password) {
         showAlert('danger', 'Veuillez remplir tous les champs.');
@@ -228,7 +233,7 @@ $loginMessage = getLoginMessage();
 
           setTimeout(() => {
             // Redirection PHP côté serveur
-            redirectByRole(result.user.role);
+            redirectByRole(result.user.role, redirectUrl);
           }, 1500);
         } else {
           showAlert('danger', result.error || 'Erreur lors de la connexion');
@@ -240,13 +245,18 @@ $loginMessage = getLoginMessage();
       });
     }
 
-    function redirectByRole(role) {
+    function redirectByRole(role, redirectUrl = null) {
       if (role === 'admin') {
         window.location.href = '/PharmaLocal/frontend/users/Admin/dashboard.php';
       } else if (role === 'pharmacie') {
         window.location.href = '/PharmaLocal/frontend/users/pharmacien/dashboard.php';
       } else {
-        window.location.href = '/PharmaLocal/frontend/users/clients/profil.php';
+        // Pour les clients, si un redirect URL est fourni, l'utiliser
+        if (redirectUrl && redirectUrl.trim() !== '') {
+          window.location.href = redirectUrl;
+        } else {
+          window.location.href = '/PharmaLocal/frontend/users/clients/profil.php';
+        }
       }
     }
 
