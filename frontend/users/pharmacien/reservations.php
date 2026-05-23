@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../includes/session.php';
 require_once __DIR__ . '/../../includes/helpers.php';
+require_once __DIR__ . '/../../../backend/includes/db.php';
 requireRole('pharmacie');
 ?>
 <!DOCTYPE html>
@@ -125,20 +126,10 @@ requireRole('pharmacie');
     }
 
     function showAlert(type, message) {
-      const alertHTML = `
-        <div class="alert alert-${type} alert-dismissible fade show mt-3" role="alert">
-          ${message}
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-      `;
-      const container = document.querySelector('.dashboard-header');
-      container.insertAdjacentHTML('afterend', alertHTML);
-      
-      setTimeout(() => {
-        document.querySelector('.alert')?.remove();
-      }, 5000);
+      showToast(type, message, 5000);
     }
   </script>
+  <script src="/PharmaLocal/frontend/users/js/toast-helper.js"></script>
   <script src="js/sidebar-toggle.js"></script>
 </body>
 </html>

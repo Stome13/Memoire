@@ -325,18 +325,5 @@ function requireLogin() {
 
 // Fonction utilitaire pour afficher les alertes
 function showAlert(type, message) {
-  const alertDiv = document.createElement('div');
-  alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-  alertDiv.role = 'alert';
-  alertDiv.innerHTML = `
-    ${message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  `;
-
-  const container = document.querySelector('main') || document.body;
-  container.insertBefore(alertDiv, container.firstChild);
-
-  setTimeout(() => {
-    alertDiv.remove();
-  }, 5000);
+  showToast(type, message, 5000);
 }

@@ -214,7 +214,7 @@ $currentUser = isLoggedIn() ? getCurrentUser() : null;
             <?php endforeach; ?>
           <?php } catch (Exception $e) {
             error_log('Erreur affichage pharmacies: ' . $e->getMessage());
-            echo '<div class="col-12"><div class="alert alert-danger">Erreur lors du chargement des pharmacies</div></div>';
+            echo '<div class="col-12"><div class="alert toast-alert alert-danger">Erreur lors du chargement des pharmacies</div></div>';
           }
           ?>
         </div>

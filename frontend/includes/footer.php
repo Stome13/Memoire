@@ -38,3 +38,4 @@
       </div>
     </div>
   </footer>
+  <script src="../js/toast-helper.js"></script>

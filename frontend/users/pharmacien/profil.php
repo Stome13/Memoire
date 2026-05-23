@@ -1,8 +1,20 @@
 <?php
 require_once __DIR__ . '/../../includes/session.php';
 require_once __DIR__ . '/../../includes/helpers.php';
+require_once __DIR__ . '/../../../backend/includes/db.php';
 requireRole('pharmacie');
 $currentUser = getCurrentUser();
+
+// Récupérer la pharmacie du pharmacien
+$pharmacy = null;
+try {
+    $db = Database::getInstance()->getConnection();
+    $stmt = $db->prepare("SELECT * FROM pharmacies WHERE pharmacien_id = ?");
+    $stmt->execute([$currentUser['id']]);
+    $pharmacy = $stmt->fetch();
+} catch (Exception $e) {
+    error_log("Erreur récupération pharmacie: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,6 +45,30 @@ $currentUser = getCurrentUser();
               <p><strong>Prénom:</strong> <?php echo escape($currentUser['prenom']); ?></p>
               <p><strong>Email:</strong> <?php echo escape($currentUser['email']); ?></p>
               <button class="btn btn-primary btn-sm">Modifier</button>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-hospital-alt me-2"></i>Informations de la pharmacie
+              </h5>
+              <?php if ($pharmacy): ?>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p><strong>Nom:</strong> <?php echo escape($pharmacy['nom'] ?? '-'); ?></p>
+                    <p><strong>Adresse:</strong> <?php echo escape($pharmacy['adresse'] ?? '-'); ?></p>
+                    <p><strong>Téléphone:</strong> <?php echo escape($pharmacy['telephone'] ?? '-'); ?></p>
+                  </div>
+                  <div class="col-md-6">
+                    <p><strong>Ville:</strong> <?php echo escape($pharmacy['ville'] ?? '-'); ?></p>
+                    <p><strong>IFU:</strong> <?php echo escape($pharmacy['ifu'] ?? '-'); ?></p>
+                    <p><strong>Email:</strong> <?php echo escape($pharmacy['email'] ?? '-'); ?></p>
+                  </div>
+                </div>
+              <?php else: ?>
+                <p class="text-muted"><i class="fas fa-exclamation-circle me-2"></i>Aucune pharmacie associée à ce compte.</p>
+              <?php endif; ?>
             </div>
           </div>
 

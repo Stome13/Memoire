@@ -28,9 +28,9 @@ function isValidEmail($email) {
  * Afficher une alerte Bootstrap
  */
 function showAlert($type, $message) {
-    echo '<div class="alert alert-' . escape($type) . ' alert-dismissible fade show" role="alert">';
+    echo '<div class="alert toast-alert alert-' . escape($type) . ' alert-dismissible fade show" role="alert">';
     echo escape($message);
-    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+    echo '<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
     echo '</div>';
 }
 

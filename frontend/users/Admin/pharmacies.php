@@ -145,6 +145,7 @@ requireRole('admin');
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/PharmaLocal/frontend/users/js/toast-helper.js"></script>
   <script src="js/admin.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -229,28 +230,17 @@ requireRole('admin');
     }
 
     function editPharmacy(id) {
-      alert('Modification non implémentée');
+      showAdminAlert('Modification non implémentée', 'warning');
     }
 
     function deletePharmacy(id) {
       if (confirm('Êtes-vous sûr de vouloir supprimer cette pharmacie ?')) {
-        alert('Suppression non implémentée');
+        showAdminAlert('Suppression non implémentée', 'warning');
       }
     }
 
     function showAlert(type, message) {
-      const alertHTML = `
-        <div class="alert alert-${type} alert-dismissible fade show" role="alert" style="position: fixed; top: 20px; right: 20px; z-index: 9999; max-width: 400px;">
-          ${message}
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-      `;
-      document.body.insertAdjacentHTML('beforeend', alertHTML);
-      
-      setTimeout(() => {
-        const alerts = document.querySelectorAll('.alert');
-        alerts.forEach(a => a.remove());
-      }, 5000);
+      showToast(type, message, 5000);
     }
   </script>
 </body>

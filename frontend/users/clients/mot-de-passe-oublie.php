@@ -127,10 +127,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="col-lg-5">
             <div class="auth-card bg-white p-5 my-5">
               <?php if ($message): ?>
-                <div class="alert alert-<?php echo $messageType; ?> alert-dismissible fade show" role="alert">
+                <div class="alert toast-alert alert-<?php echo $messageType; ?> alert-dismissible fade show" role="alert">
                   <i class="fas fa-<?php echo $messageType === 'success' ? 'check-circle' : 'exclamation-circle'; ?> me-2"></i>
                   <?php echo escape($message); ?>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
               <?php endif; ?>
 

@@ -48,7 +48,7 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
   </div>
 </nav>
 
-<script src="/PharmaLocal/frontend/users/clients/js/medicaments.js"></script>
+<script src="js/medicaments.js"></script>
 <script>
   // Initialiser le badge du panier au chargement de chaque page
   document.addEventListener('DOMContentLoaded', function() {

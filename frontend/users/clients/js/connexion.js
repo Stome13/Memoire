@@ -108,20 +108,7 @@ function handleLogin(e) {
 
 // Fonction utilitaire pour afficher les alertes (si non définie dans auth.js)
 if (typeof showAlert === 'undefined') {
-  function showAlert(type, message) {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-    alertDiv.role = 'alert';
-    alertDiv.innerHTML = `
-      ${message}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
-
-    const container = document.querySelector('main') || document.body;
-    container.insertBefore(alertDiv, container.firstChild);
-
-    setTimeout(() => {
-      alertDiv.remove();
-    }, 5000);
-  }
+function showAlert(type, message) {
+  showToast(type, message, 5000);
+}
 }

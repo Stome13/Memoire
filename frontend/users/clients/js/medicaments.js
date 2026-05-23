@@ -2,6 +2,38 @@
 // GESTION DU PANIER DE RÉSERVATION
 // ========================================
 
+function getToastContainer() {
+  let container = document.getElementById('toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    container.className = 'position-fixed top-0 end-0 p-3';
+    container.style.zIndex = '1080';
+    (document.body || document.documentElement).appendChild(container);
+  }
+  return container;
+}
+
+function showToast(type, message, delay = 5000) {
+  const toastContainer = getToastContainer();
+  const toastEl = document.createElement('div');
+  toastEl.className = `toast align-items-center text-bg-${type} border-0 mb-2`;
+  toastEl.role = 'alert';
+  toastEl.setAttribute('aria-live', 'assertive');
+  toastEl.setAttribute('aria-atomic', 'true');
+  toastEl.innerHTML = `
+    <div class="d-flex">
+      <div class="toast-body">${String(message).replace(/\n/g, '<br>')}</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  `;
+  toastContainer.appendChild(toastEl);
+  const toast = new bootstrap.Toast(toastEl, { autohide: true, delay });
+  toast.show();
+  toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+  return toast;
+}
+
 // Initialiser le panier depuis localStorage
 let cartItems = JSON.parse(localStorage.getItem('medicineCart')) || [];
 
@@ -119,17 +151,17 @@ function openAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName, 
                 <label for="qty-cart" class="form-label fw-bold">Quantité</label>
                 <div class="input-group">
                   <button type="button" class="btn btn-outline-secondary" id="qty-minus-cart">−</button>
-                  <input type="number" class="form-control text-center" id="qty-cart" min="1" max="80" value="1" required />
+                  <input type="number" class="form-control text-center" id="qty-cart" min="1" max="10" value="1" required />
                   <button type="button" class="btn btn-outline-secondary" id="qty-plus-cart">+</button>
                 </div>
-                <small class="text-muted">max: 80</small>
+                <small class="text-muted">max: 10</small>
               </div>
 
               <!-- Total Price -->
               <div class="mb-4 p-3 bg-success bg-opacity-10 rounded">
                 <div class="d-flex justify-content-between align-items-center">
                   <label class="form-label fw-bold mb-0">Prix total:</label>
-                  <span class="fs-5 fw-bold text-success" id="total-price-display">${priceFormatted}</span>
+                  <span class="fs-5 fw-bold text-white" id="total-price-display">${priceFormatted}</span>
                 </div>
               </div>
 
@@ -213,7 +245,7 @@ function setupAddToCartModal(medicineId, pharmacyId, medicineName, pharmacyName,
  */
 function openCartModal() {
   if (cartItems.length === 0) {
-    alert('Votre panier est vide');
+    showToast('warning', 'Votre panier est vide');
     return;
   }
 
@@ -320,7 +352,7 @@ function removeFromCart(index) {
  */
 async function validateCart(modal) {
   if (cartItems.length === 0) {
-    alert('Votre panier est vide');
+    showToast('warning', 'Votre panier est vide');
     return;
   }
 
@@ -348,7 +380,7 @@ async function validateCart(modal) {
     const allSuccess = results.every(result => result.success);
 
     if (allSuccess) {
-      alert('Réservation(s) effectuée(s) avec succès !');
+      showToast('success', 'Réservation(s) effectuée(s) avec succès !');
       
       // Vider le panier
       cartItems = [];
@@ -357,11 +389,11 @@ async function validateCart(modal) {
       
       modal.hide();
     } else {
-      alert('Erreur lors de la création de certaines réservations');
+      showToast('danger', 'Erreur lors de la création de certaines réservations');
     }
   } catch (error) {
     console.error('Erreur lors de la validation du panier:', error);
-    alert('Erreur lors de la validation du panier. Veuillez réessayer.');
+    showToast('danger', 'Erreur lors de la validation du panier. Veuillez réessayer.');
   } finally {
     btn.disabled = false;
     btn.innerHTML = originalText;
@@ -770,7 +802,7 @@ function setupReservationWithPharmacyModal(medicineId, pharmacyId, medicineName,
     const qty = document.getElementById('qty-pharm').value;
 
     if (!fullname || !phone || !qty) {
-      alert('Veuillez remplir tous les champs');
+      showToast('warning', 'Veuillez remplir tous les champs');
       return;
     }
 
@@ -797,18 +829,18 @@ function setupReservationWithPharmacyModal(medicineId, pharmacyId, medicineName,
       submitBtn.innerHTML = originalText;
       
       if (data.success) {
-        alert('Réservation effectuée avec succès !\n\nMédicament: ' + medicineName + '\nPharmacies: ' + pharmacyName + '\nQuantité: ' + qty);
+        showToast('success', 'Réservation effectuée avec succès !\n\nMédicament: ' + medicineName + '\nPharmacies: ' + pharmacyName + '\nQuantité: ' + qty);
         modal.hide();
         reservationForm.reset();
       } else {
-        alert('Erreur: ' + (data.error || 'Impossible de créer la réservation'));
+        showToast('danger', 'Erreur: ' + (data.error || 'Impossible de créer la réservation'));
       }
     })
     .catch(error => {
       console.error('Erreur lors de la réservation:', error);
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
-      alert('Erreur lors de la réservation. Veuillez réessayer.');
+      showToast('danger', 'Erreur lors de la réservation. Veuillez réessayer.');
     });
   });
 }
@@ -908,7 +940,7 @@ function attachReservationListeners() {
 function openReservationModal(medicineId) {
   const medicine = MEDICINES_DATA.find(m => m.id === medicineId);
   if (!medicine) {
-    alert('Médicament non trouvé');
+    showToast('danger', 'Médicament non trouvé');
     return;
   }
 
@@ -1087,12 +1119,12 @@ function setupReservationModal(medicine, modal) {
     const pharmacyId = document.getElementById('pharmacy-select').value;
 
     if (!fullname || !phone || !qty || !pharmacyId) {
-      alert('Veuillez remplir tous les champs');
+      showToast('warning', 'Veuillez remplir tous les champs');
       return;
     }
 
     // Afficher un message de succès
-    alert('Réservation effectuée avec succès !\n\nMédicament: ' + medicine.name + '\nQuantité: ' + qty + '\nNom: ' + fullname);
+    showToast('success', 'Réservation effectuée avec succès !\n\nMédicament: ' + medicine.name + '\nQuantité: ' + qty + '\nNom: ' + fullname);
     modal.hide();
     
     // Réinitialiser le formulaire

@@ -74,8 +74,7 @@ $currentUser = getCurrentUser();
       const confirmPassword = document.getElementById('confirmPassword').value;
 
       if (newPassword !== confirmPassword) {
-        alert('Les mots de passe ne correspondent pas');
-        return;
+          showAdminAlert('Les mots de passe ne correspondent pas', 'warning');
       }
 
       try {
@@ -93,14 +92,14 @@ $currentUser = getCurrentUser();
         const result = await response.json();
 
         if (result.success) {
-          alert('Mot de passe changé avec succès');
+          showAdminAlert('Mot de passe changé avec succès', 'success');
           document.getElementById('changePasswordForm').reset();
         } else {
-          alert(result.error || 'Erreur lors du changement');
+          showAdminAlert(result.error || 'Erreur lors du changement', 'danger');
         }
       } catch (error) {
         console.error('Erreur:', error);
-        alert('Erreur lors du changement de mot de passe');
+        showAdminAlert('Erreur lors du changement de mot de passe', 'danger');
       }
     });
   </script>

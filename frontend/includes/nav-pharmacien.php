@@ -1,7 +1,27 @@
 <?php
 // Navigation pour les pages Pharmaciens
+if (!function_exists('getCurrentUser')) {
+    require_once __DIR__ . '/helpers.php';
+}
+if (!class_exists('Database')) {
+    require_once __DIR__ . '/../../backend/includes/db.php';
+}
+
 $currentPage = basename($_SERVER['PHP_SELF'], '.php');
-$currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
+$currentUser = $currentUser ?? getCurrentUser();
+
+// Récupérer la pharmacie du pharmacien si pas déjà disponible
+$pharmacy = $pharmacy ?? null;
+if (!$pharmacy && $currentUser) {
+    try {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("SELECT * FROM pharmacies WHERE pharmacien_id = ?");
+        $stmt->execute([$currentUser['id']]);
+        $pharmacy = $stmt->fetch();
+    } catch (Exception $e) {
+        error_log("Erreur récupération pharmacie: " . $e->getMessage());
+    }
+}
 ?>
 <!-- Navigation Top -->
 <nav class="navbar navbar-expand-lg navbar-light pharmacien-navbar sticky-top">
@@ -50,6 +70,11 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
       <div class="profile-info">
         <h6><?php echo $currentUser['prenom'] ?? 'Pharmacien'; ?></h6>
         <small><?php echo $currentUser['nom'] ?? 'Nom'; ?></small>
+        <?php if ($pharmacy): ?>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; color: rgba(255,255,255,0.8);">
+            <i class="fas fa-hospital-alt me-1"></i><?php echo htmlspecialchars($pharmacy['nom']); ?>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
     
@@ -139,6 +164,11 @@ $currentUser = $currentUser ?? null; // Assurer que $currentUser est défini
       <div class="profile-info">
         <h6><?php echo $currentUser['prenom'] ?? 'Pharmacien'; ?></h6>
         <small><?php echo $currentUser['nom'] ?? 'Nom'; ?></small>
+        <?php if ($pharmacy): ?>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; color: rgba(21, 20, 20, 0.8);">
+            <i class="fas fa-hospital-alt me-1"></i><?php echo htmlspecialchars($pharmacy['nom']); ?>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
 

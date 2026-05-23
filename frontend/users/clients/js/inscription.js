@@ -131,20 +131,7 @@ function validatePasswords() {
 
 // Afficher une alerte
 function showAlert(type, message) {
-  const alertDiv = document.createElement('div');
-  alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-  alertDiv.role = 'alert';
-  alertDiv.innerHTML = `
-    ${message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  `;
-  
-  const container = document.querySelector('.auth-card') || document.body;
-  container.insertBefore(alertDiv, container.firstChild);
-  
-  if (type === 'success') {
-    setTimeout(() => alertDiv.remove(), 3000);
-  }
+  showToast(type, message, 5000);
 }
 
 // Finaliser l'inscription (asynchrone avec API)

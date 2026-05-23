@@ -95,6 +95,7 @@ requireRole('admin');
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/PharmaLocal/frontend/users/js/toast-helper.js"></script>
   <script>
     // Charger les médicaments
     async function loadMedicaments(pharmacyId = 0) {
@@ -215,19 +216,7 @@ requireRole('admin');
 
     // Afficher une alerte
     function showAlert(type, message) {
-      const alertHTML = `
-        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-          ${message}
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-      `;
-      const container = document.getElementById('alert-container');
-      container.innerHTML = alertHTML;
-      
-      // Auto-fermer après 5 secondes
-      setTimeout(() => {
-        container.innerHTML = '';
-      }, 5000);
+      showToast(type, message, 5000);
     }
 
     // Charger les pharmacies et les médicaments au chargement

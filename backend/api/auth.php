@@ -11,12 +11,30 @@ if ($action === 'register') {
     $prenom = trim(getPost('prenom'));
     $email = trim(getPost('email'));
     $telephone = trim(getPost('telephone'));
+    $adresse = trim(getPost('adresse'));
     $password = getPost('password');
     $passwordConfirm = getPost('passwordConfirm');
 
     // Validations
     if (empty($nom) || empty($prenom) || empty($email) || empty($password)) {
         jsonResponse(['success' => false, 'error' => 'Champs obligatoires manquants'], 400);
+    }
+
+    // Validation du prénom et du nom : uniquement lettres, espaces, traits, apostrophes
+    $nameRegex = '/^[a-zA-ZÀ-ÿ\s\'-]+$/u';
+    if (!preg_match($nameRegex, $prenom)) {
+        jsonResponse(['success' => false, 'error' => 'Le prénom ne doit contenir que des lettres'], 400);
+    }
+    if (!preg_match($nameRegex, $nom)) {
+        jsonResponse(['success' => false, 'error' => 'Le nom ne doit contenir que des lettres'], 400);
+    }
+
+    // Validation du téléphone : chiffres, espaces, +
+    if (!empty($telephone)) {
+        $phoneRegex = '/^[\d\s\+]+$/';
+        if (!preg_match($phoneRegex, $telephone)) {
+            jsonResponse(['success' => false, 'error' => 'Le téléphone doit contenir uniquement des chiffres, espaces ou le symbole +'], 400);
+        }
     }
 
     if (!isValidEmail($email)) {
@@ -42,8 +60,8 @@ if ($action === 'register') {
     // Insérer l'utilisateur
     try {
         $hashedPassword = hashPassword($password);
-        $stmt = $db->prepare("INSERT INTO users (nom, prenom, email, telephone, password, role, date_inscription) VALUES (?, ?, ?, ?, ?, 'client', NOW())");
-        $stmt->execute([$nom, $prenom, $email, $telephone, $hashedPassword]);
+        $stmt = $db->prepare("INSERT INTO users (nom, prenom, email, telephone, adresse, password, role, date_inscription) VALUES (?, ?, ?, ?, ?, ?, 'client', NOW())");
+        $stmt->execute([$nom, $prenom, $email, $telephone, $adresse, $hashedPassword]);
         $userId = $db->lastInsertId();
 
         // Note: Pas de création de session ici pour obliger l'utilisateur à se connecter

@@ -209,24 +209,7 @@ function submitReservation(e) {
  * Fonction utilitaire pour afficher les alertes (version améliorée)
  */
 function showAlert(type, message) {
-  const alertDiv = document.createElement('div');
-  alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-  alertDiv.role = 'alert';
-  alertDiv.innerHTML = `
-    ${message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  `;
-
-  const container = document.querySelector('main') || document.body;
-  if (container) {
-    container.insertBefore(alertDiv, container.firstChild);
-  } else {
-    document.body.insertBefore(alertDiv, document.body.firstChild);
-  }
-
-  setTimeout(() => {
-    alertDiv.remove();
-  }, 6000);
+  showToast(type, message, 5000);
 }
 
 /**

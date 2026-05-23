@@ -124,9 +124,9 @@ $redirectUrl = isset($_GET['redirect']) ? urldecode($_GET['redirect']) : null;
               <div id="alertContainer"></div>
               
               <?php if ($loginMessage): ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert toast-alert alert-warning alert-dismissible fade show" role="alert">
                   <i class="fas fa-info-circle me-2"></i><?php echo escape($loginMessage); ?>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
               <?php endif; ?>
 
@@ -209,7 +209,7 @@ $redirectUrl = isset($_GET['redirect']) ? urldecode($_GET['redirect']) : null;
       }
 
       // Appel API à la connexion
-      fetch('/PharmaLocal/backend/api/auth.php', {
+      fetch('../../../backend/api/auth.php', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -247,29 +247,21 @@ $redirectUrl = isset($_GET['redirect']) ? urldecode($_GET['redirect']) : null;
 
     function redirectByRole(role, redirectUrl = null) {
       if (role === 'admin') {
-        window.location.href = '/PharmaLocal/frontend/users/Admin/dashboard.php';
+        window.location.href = '../Admin/dashboard.php';
       } else if (role === 'pharmacie') {
-        window.location.href = '/PharmaLocal/frontend/users/pharmacien/dashboard.php';
+        window.location.href = '../pharmacien/dashboard.php';
       } else {
         // Pour les clients, si un redirect URL est fourni, l'utiliser
         if (redirectUrl && redirectUrl.trim() !== '') {
           window.location.href = redirectUrl;
         } else {
-          window.location.href = '/PharmaLocal/frontend/users/clients/profil.php';
+          window.location.href = 'profil.php';
         }
       }
     }
 
     function showAlert(type, message) {
-      const container = document.getElementById('alertContainer');
-      const alertDiv = document.createElement('div');
-      alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-      alertDiv.setAttribute('role', 'alert');
-      alertDiv.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      `;
-      container.appendChild(alertDiv);
+      showToast(type, message, 5000);
     }
   </script>
 </body>

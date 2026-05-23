@@ -289,16 +289,7 @@ function setupFormValidation() {
 }
 
 function showSuccessAlert(message) {
-  const alertDiv = document.createElement('div');
-  alertDiv.className = 'alert alert-success position-fixed bottom-0 end-0 m-3';
-  alertDiv.style.zIndex = '9999';
-  alertDiv.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
-  
-  document.body.appendChild(alertDiv);
-
-  setTimeout(() => {
-    alertDiv.remove();
-  }, 3000);
+  showToast('success', message, 5000);
 }
 
 

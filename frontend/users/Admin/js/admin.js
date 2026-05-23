@@ -33,20 +33,37 @@ async function adminApiFetch(url, options = {}) {
   return data;
 }
 
-function showAdminAlert(message, type = 'success') {
-  const alertContainer = document.getElementById('adminAlert') || document.body;
-  const alertDiv = document.createElement('div');
-  alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-  alertDiv.role = 'alert';
-  alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
-
-  if (alertContainer === document.body) {
-    document.body.prepend(alertDiv);
-  } else {
-    alertContainer.appendChild(alertDiv);
+function getAdminToastContainer() {
+  let container = document.getElementById('admin-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'admin-toast-container';
+    container.className = 'position-fixed top-0 end-0 p-3';
+    container.style.zIndex = '1080';
+    (document.body || document.documentElement).appendChild(container);
   }
+  return container;
+}
 
-  setTimeout(() => alertDiv.remove(), 6000);
+function showAdminAlert(message, type = 'success') {
+  const container = getAdminToastContainer();
+  const toastEl = document.createElement('div');
+  toastEl.className = `toast align-items-center text-bg-${type} border-0 mb-2`;
+  toastEl.role = 'alert';
+  toastEl.setAttribute('aria-live', 'assertive');
+  toastEl.setAttribute('aria-atomic', 'true');
+  toastEl.innerHTML = `
+    <div class="d-flex">
+      <div class="toast-body">${String(message).replace(/\n/g, '<br>')}</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  `;
+
+  container.appendChild(toastEl);
+  const toast = new bootstrap.Toast(toastEl, { autohide: true, delay: 5000 });
+  toast.show();
+  toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+  return toast;
 }
 
 async function loadDashboard() {

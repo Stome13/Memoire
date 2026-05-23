@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../includes/session.php';
 require_once __DIR__ . '/../../includes/helpers.php';
+require_once __DIR__ . '/../../../backend/includes/db.php';
 requireRole('pharmacie');
 ?>
 <!DOCTYPE html>

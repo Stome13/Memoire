@@ -203,13 +203,13 @@ if (isLoggedIn()) {
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="firstName" class="form-label fw-bold">Prénom</label>
-                      <input type="text" class="form-control form-control-lg" id="firstName" placeholder="Jean" required />
-                      <div class="invalid-feedback">Le prénom est requis.</div>
+                      <input type="text" class="form-control form-control-lg" id="firstName" placeholder="Jean" required pattern="[a-zA-ZÀ-ÿ\s'-]+" title="Le prénom ne doit contenir que des lettres, espaces, traits ou apostrophes" />
+                      <div class="invalid-feedback">Le prénom est requis et ne doit contenir que des lettres.</div>
                     </div>
                     <div class="col-md-6 form-group">
                       <label for="lastName" class="form-label fw-bold">Nom</label>
-                      <input type="text" class="form-control form-control-lg" id="lastName" placeholder="Dupont" required />
-                      <div class="invalid-feedback">Le nom est requis.</div>
+                      <input type="text" class="form-control form-control-lg" id="lastName" placeholder="Dupont" required pattern="[a-zA-ZÀ-ÿ\s'-]+" title="Le nom ne doit contenir que des lettres, espaces, traits ou apostrophes" />
+                      <div class="invalid-feedback">Le nom est requis et ne doit contenir que des lettres.</div>
                     </div>
                   </div>
 
@@ -221,7 +221,14 @@ if (isLoggedIn()) {
 
                   <div class="form-group">
                     <label for="telephone" class="form-label fw-bold">Téléphone</label>
-                    <input type="tel" class="form-control form-control-lg" id="telephone" placeholder="+229 XX XX XX XX" />
+                    <input type="tel" class="form-control form-control-lg" id="telephone" placeholder="+229 XX XX XX XX" pattern="[\d\s\+]+" title="Le téléphone doit contenir uniquement des chiffres, espaces ou le symbole +" />
+                    <div class="invalid-feedback">Le téléphone doit contenir uniquement des chiffres et le symbole + ou espaces.</div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="adresse" class="form-label fw-bold">Adresse</label>
+                    <textarea class="form-control form-control-lg" id="adresse" placeholder="123 Rue de la Paix, Cotonou" rows="3"></textarea>
+                    <div class="invalid-feedback">Veuillez entrer une adresse valide.</div>
                   </div>
 
                   <div class="form-group">
@@ -269,7 +276,7 @@ if (isLoggedIn()) {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const API_BASE = '/PharmaLocal/backend/api';
+    const API_BASE = '../../../backend/api';
 
     document.addEventListener('DOMContentLoaded', function () {
       setupInscriptionForm();
@@ -384,8 +391,28 @@ if (isLoggedIn()) {
       const lastName = document.getElementById('lastName').value;
       const email = document.getElementById('email').value;
       const telephone = document.getElementById('telephone').value || '';
+      const adresse = document.getElementById('adresse').value || '';
       const password = document.getElementById('password').value;
       const passwordConfirm = document.getElementById('confirmPassword').value;
+
+      // Validation côté client plus stricte
+      // Validations Prénom et Nom : uniquement lettres, espaces, traits, apostrophes
+      const nameRegex = /^[a-zA-ZÀ-ÿ\s'-]+$/;
+      if (!nameRegex.test(firstName)) {
+        showAlert('danger', 'Le prénom ne doit contenir que des lettres.');
+        return;
+      }
+      if (!nameRegex.test(lastName)) {
+        showAlert('danger', 'Le nom ne doit contenir que des lettres.');
+        return;
+      }
+
+      // Validation Téléphone : chiffres, espaces, +
+      const phoneRegex = /^[\d\s\+]*$/;
+      if (telephone && !phoneRegex.test(telephone)) {
+        showAlert('danger', 'Le téléphone doit contenir uniquement des chiffres, espaces ou le symbole +.');
+        return;
+      }
 
       try {
         const response = await fetch(`${API_BASE}/auth.php`, {
@@ -398,6 +425,7 @@ if (isLoggedIn()) {
             nom: lastName,
             email: email,
             telephone: telephone,
+            adresse: adresse,
             password: password,
             passwordConfirm: passwordConfirm
           })
@@ -410,7 +438,7 @@ if (isLoggedIn()) {
           localStorage.setItem('pharmaLocal_currentUser', JSON.stringify(data.user));
           
           setTimeout(() => {
-            window.location.href = '/PharmaLocal/frontend/users/clients/connexion.php';
+            window.location.href = 'connexion.php';
           }, 1500);
         } else {
           showAlert('danger', data.error || 'Erreur lors de l\'inscription');
@@ -422,15 +450,7 @@ if (isLoggedIn()) {
     }
 
     function showAlert(type, message) {
-      const container = document.getElementById('alertContainer');
-      const alertDiv = document.createElement('div');
-      alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-      alertDiv.setAttribute('role', 'alert');
-      alertDiv.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      `;
-      container.appendChild(alertDiv);
+      showToast(type, message, 5000);
     }
   </script>
 </body>

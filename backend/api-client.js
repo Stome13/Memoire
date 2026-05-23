@@ -1,6 +1,38 @@
 // Configuration API
 const API_BASE = 'http://localhost/PharmaLocal/backend/api';
 
+function getToastContainer() {
+  let container = document.getElementById('toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    container.className = 'position-fixed top-0 end-0 p-3';
+    container.style.zIndex = '1080';
+    (document.body || document.documentElement).appendChild(container);
+  }
+  return container;
+}
+
+function showToast(type, message, delay = 5000) {
+  const toastContainer = getToastContainer();
+  const toastEl = document.createElement('div');
+  toastEl.className = `toast align-items-center text-bg-${type} border-0 mb-2`;
+  toastEl.role = 'alert';
+  toastEl.setAttribute('aria-live', 'assertive');
+  toastEl.setAttribute('aria-atomic', 'true');
+  toastEl.innerHTML = `
+    <div class="d-flex">
+      <div class="toast-body">${String(message).replace(/\n/g, '<br>')}</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  `;
+  toastContainer.appendChild(toastEl);
+  const toast = new bootstrap.Toast(toastEl, { autohide: true, delay });
+  toast.show();
+  toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+  return toast;
+}
+
 // ============ AUTHENTIFICATION ============
 
 // Inscription
@@ -135,8 +167,10 @@ function cancelReservation(reservationId) {
 async function requireLogin(callback) {
     const session = await checkSession();
     if (!session.loggedIn) {
-        alert('Vous devez être connecté pour accéder à cette fonctionnalité');
-        window.location.href = '/PharmaLocal/frontend/users/clients/connexion.html';
+        showToast('warning', 'Vous devez être connecté pour accéder à cette fonctionnalité');
+        setTimeout(() => {
+            window.location.href = '/PharmaLocal/frontend/users/clients/connexion.html';
+        }, 900);
         return;
     }
     if (callback) callback(session.user);
@@ -154,10 +188,12 @@ document.getElementById('btnRegister')?.addEventListener('click', async () => {
     });
 
     if (result.success) {
-        alert('Inscription réussie ! Vous pouvez vous connecter.');
-        window.location.href = '/PharmaLocal/frontend/users/clients/connexion.html';
+        showToast('success', 'Inscription réussie ! Vous pouvez vous connecter.');
+        setTimeout(() => {
+            window.location.href = '/PharmaLocal/frontend/users/clients/connexion.html';
+        }, 900);
     } else {
-        alert('Erreur : ' + result.error);
+        showToast('danger', 'Erreur : ' + result.error);
     }
 });
 
@@ -169,12 +205,14 @@ document.getElementById('btnLogin')?.addEventListener('click', async () => {
     );
 
     if (result.success) {
-        alert('Connexion réussie !');
+        showToast('success', 'Connexion réussie !');
         localStorage.setItem('user_id', result.user.id);
         localStorage.setItem('user_email', result.user.email);
-        window.location.href = '/PharmaLocal/frontend/users/clients/profil.html';
+        setTimeout(() => {
+            window.location.href = '/PharmaLocal/frontend/users/clients/profil.html';
+        }, 900);
     } else {
-        alert('Erreur : ' + result.error);
+        showToast('danger', 'Erreur : ' + result.error);
     }
 });
 
@@ -188,10 +226,10 @@ document.getElementById('btnReserver')?.addEventListener('click', async () => {
         );
 
         if (result.success) {
-            alert('Réservation créée avec succès !');
+            showToast('success', 'Réservation créée avec succès !');
             loadMyReservations();
         } else {
-            alert('Erreur : ' + result.error);
+            showToast('danger', 'Erreur : ' + result.error);
         }
     });
 });
@@ -220,10 +258,10 @@ async function annulerReservation(reservationId) {
     if (!confirm('Êtes-vous sûr de vouloir annuler cette réservation ?')) return;
     const result = await cancelReservation(reservationId);
     if (result.success) {
-        alert('Réservation annulée');
+        showToast('success', 'Réservation annulée');
         loadMyReservations();
     } else {
-        alert('Erreur : ' + result.error);
+        showToast('danger', 'Erreur : ' + result.error);
     }
 }
 

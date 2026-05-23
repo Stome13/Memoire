@@ -26,25 +26,25 @@ if (isset($_POST['btn_inscrire'])) {
     $showModal = true;
     
     if (!$pharmacie_id) {
-        $message = '<div class="alert alert-danger">Aucune pharmacie associée à votre compte.</div>';
+        $message = '<div class="alert toast-alert alert-danger">Aucune pharmacie associée à votre compte.</div>';
     } elseif (empty($date_garde) || empty($heure_debut) || empty($heure_fin)) {
-        $message = '<div class="alert alert-danger">Tous les champs sont obligatoires.</div>';
+        $message = '<div class="alert toast-alert alert-danger">Tous les champs sont obligatoires.</div>';
     } elseif ($date_garde < $today) {
-        $message = '<div class="alert alert-danger">La date de garde ne peut pas être dans le passé.</div>';
+        $message = '<div class="alert toast-alert alert-danger">La date de garde ne peut pas être dans le passé.</div>';
     } else {
         // Vérifier doublon
         $stmt = $db->prepare('SELECT id FROM gardes WHERE pharmacie_id = ? AND date_garde = ?');
         $stmt->execute([$pharmacie_id, $date_garde]);
         if ($stmt->fetch()) {
-            $message = '<div class="alert alert-warning">Vous êtes déjà inscrit pour une garde à cette date.</div>';
+            $message = '<div class="alert toast-alert alert-warning">Vous êtes déjà inscrit pour une garde à cette date.</div>';
         } else {
             try {
                 $stmt = $db->prepare('INSERT INTO gardes (pharmacie_id, date_garde, heure_debut, heure_fin) VALUES (?, ?, ?, ?)');
                 $stmt->execute([$pharmacie_id, $date_garde, $heure_debut, $heure_fin]);
-                $message = '<div class="alert alert-success">Inscription pour la garde réussie !</div>';
+                $message = '<div class="alert toast-alert alert-success">Inscription pour la garde réussie !</div>';
                 $showModal = false;
             } catch (Exception $e) {
-                $message = '<div class="alert alert-danger">Erreur lors de l\'inscription.</div>';
+                $message = '<div class="alert toast-alert alert-danger">Erreur lors de l\'inscription.</div>';
             }
         }
     }
@@ -58,9 +58,9 @@ if (isset($_POST['btn_annuler']) && isset($_POST['garde_id'])) {
     if ($stmt->fetch()) {
         $stmt = $db->prepare('DELETE FROM gardes WHERE id = ?');
         $stmt->execute([$garde_id]);
-        $message = '<div class="alert alert-success">Garde annulée avec succès.</div>';
+        $message = '<div class="alert toast-alert alert-success">Garde annulée avec succès.</div>';
     } else {
-        $message = '<div class="alert alert-danger">Impossible d\'annuler cette garde.</div>';
+        $message = '<div class="alert toast-alert alert-danger">Impossible d\'annuler cette garde.</div>';
     }
 }
 ?>
@@ -172,6 +172,7 @@ if (isset($_POST['btn_annuler']) && isset($_POST['garde_id'])) {
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/PharmaLocal/frontend/users/js/toast-helper.js"></script>
   <?php if ($showModal): ?>
   <script>
     window.onload = function() {

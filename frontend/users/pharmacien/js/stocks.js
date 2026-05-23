@@ -3,6 +3,38 @@
 // Load and display inventory from API
 // ========================================
 
+function getToastContainer() {
+  let container = document.getElementById('toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    container.className = 'position-fixed top-0 end-0 p-3';
+    container.style.zIndex = '1080';
+    (document.body || document.documentElement).appendChild(container);
+  }
+  return container;
+}
+
+function showToast(type, message, delay = 5000) {
+  const toastContainer = getToastContainer();
+  const toastEl = document.createElement('div');
+  toastEl.className = `toast align-items-center text-bg-${type} border-0 mb-2`;
+  toastEl.role = 'alert';
+  toastEl.setAttribute('aria-live', 'assertive');
+  toastEl.setAttribute('aria-atomic', 'true');
+  toastEl.innerHTML = `
+    <div class="d-flex">
+      <div class="toast-body">${String(message).replace(/\n/g, '<br>')}</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  `;
+  toastContainer.appendChild(toastEl);
+  const toast = new bootstrap.Toast(toastEl, { autohide: true, delay });
+  toast.show();
+  toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+  return toast;
+}
+
 let STOCKS_DATA = [];
 let PHARMACIE_ID = null;
 
@@ -94,12 +126,12 @@ async function updateStock(medicamentId, newQuantite) {
     if (result.success) {
       loadStocks();
     } else {
-      alert('Erreur: ' + result.error);
+      showToast('danger', 'Erreur: ' + result.error);
       loadStocks(); // Recharger pour corriger l'affichage
     }
   } catch (error) {
     console.error('Erreur mise à jour stock:', error);
-    alert('Erreur: ' + error.message);
+    showToast('danger', 'Erreur: ' + error.message);
   }
 }
 
@@ -120,11 +152,11 @@ async function increaseStock(medicamentId, amount) {
     if (result.success) {
       loadStocks(); // Recharger
     } else {
-      alert('Erreur: ' + result.error);
+      showToast('danger', 'Erreur: ' + result.error);
     }
   } catch (error) {
     console.error('Erreur augmentation stock:', error);
-    alert('Erreur: ' + error.message);
+    showToast('danger', 'Erreur: ' + error.message);
   }
 }
 
@@ -145,11 +177,11 @@ async function decreaseStock(medicamentId, amount) {
     if (result.success) {
       loadStocks(); // Recharger
     } else {
-      alert('Erreur: ' + result.error);
+      showToast('danger', 'Erreur: ' + result.error);
     }
   } catch (error) {
     console.error('Erreur réduction stock:', error);
-    alert('Erreur: ' + error.message);
+    showToast('danger', 'Erreur: ' + error.message);
   }
 }
 

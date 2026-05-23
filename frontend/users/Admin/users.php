@@ -81,12 +81,12 @@ $currentUser = getCurrentUser();
     }
 
     function editUser(id) {
-      alert('Modification de l\'utilisateur ' + id);
+      showAdminAlert('Modification de l\'utilisateur ' + id, 'info');
     }
 
     function deleteUser(id) {
       if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?')) {
-        alert('Suppression de l\'utilisateur ' + id);
+        showAdminAlert('Suppression de l\'utilisateur ' + id, 'warning');
       }
     }
   </script>
