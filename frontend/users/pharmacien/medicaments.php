@@ -1,0 +1,430 @@
+<?php
+require_once __DIR__ . '/../../includes/session.php';
+require_once __DIR__ . '/../../includes/helpers.php';
+require_once __DIR__ . '/../../../backend/includes/db.php';
+requireRole('pharmacie');
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Médicaments - Pharmacien | PharmaGarde</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard-styles.css" />
+</head>
+<body>
+  <?php include __DIR__ . '/../../includes/nav-pharmacien.php'; ?>
+
+      <div class="dashboard-header">
+        <h1 class="page-title">
+          <i class="fas fa-pills me-2"></i>Médicaments
+        </h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMedicineModal">
+          <i class="fas fa-plus me-2"></i>Ajouter un médicament
+        </button>
+      </div>
+
+      <div class="table-responsive mt-4">
+        <table class="table table-striped" id="medicinesTable">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Dosage</th>
+              <th>Stock</th>
+              <th>Prix</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="medicinesTableBody">
+            <tr><td colspan="5" class="text-center">Chargement des médicaments...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Ajouter Médicament -->
+  <div class="modal fade" id="addMedicineModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ajouter un médicament</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="addMedicineForm">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-control" name="nom" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Dosage</label>
+              <input type="text" class="form-control" name="dosage" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Catégorie</label>
+              <input type="text" class="form-control" name="categorie" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prix</label>
+              <input type="number" class="form-control" name="prix" step="0.01" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" name="description" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Quantité en stock</label>
+              <input type="number" class="form-control" name="quantite" value="0" min="0" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-info" id="btnImport">
+              <i class="fas fa-file-import me-2"></i>Importer
+            </button>
+            <button type="button" class="btn btn-warning" id="btnImportAll" style="display: none;" onclick="importAllMedicines()">
+              <i class="fas fa-download me-2"></i>Importer tous
+            </button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </form>
+        <input type="file" id="importFile" style="display: none;" accept=".xlsx,.xls,.csv" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Éditer Médicament -->
+  <div class="modal fade" id="editMedicineModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Éditer un médicament</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="editMedicineForm">
+          <input type="hidden" id="edit-medicine-id" name="id" />
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-control" id="edit-medicine-nom" name="nom" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Dosage</label>
+              <input type="text" class="form-control" id="edit-medicine-dosage" name="dosage" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Catégorie</label>
+              <input type="text" class="form-control" id="edit-medicine-categorie" name="categorie" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prix</label>
+              <input type="number" class="form-control" id="edit-medicine-prix" name="prix" step="0.01" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" id="edit-medicine-description" name="description" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Quantité en stock</label>
+              <input type="number" class="form-control" id="edit-medicine-quantite" name="quantite" min="0" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let importedMedicines = []; // Stocker les médicaments importés
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMedicines();
+      
+      // Gérer la soumission du formulaire
+      const form = document.getElementById('addMedicineForm');
+      if (form) {
+        form.addEventListener('submit', handleAddMedicine);
+      }
+
+      // Gérer le bouton d'import
+      const btnImport = document.getElementById('btnImport');
+      const importFile = document.getElementById('importFile');
+      
+      if (btnImport) {
+        btnImport.addEventListener('click', () => {
+          importFile.click();
+        });
+      }
+
+      if (importFile) {
+        importFile.addEventListener('change', handleFileImport);
+      }
+    });
+
+    // Charger les médicaments
+    async function loadMedicines() {
+      try {
+        const response = await fetch('/PharmaLocal/backend/api/medicaments.php?action=list');
+        const result = await response.json();
+        
+        if (result.success) {
+          const tbody = document.getElementById('medicinesTableBody');
+          
+          if (result.data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" class="text-center">Aucun médicament trouvé</td></tr>';
+            return;
+          }
+
+          tbody.innerHTML = result.data.map(med => `
+            <tr>
+              <td>${med.nom}</td>
+              <td>${med.dosage || '-'}</td>
+              <td>
+                <span class="badge bg-${med.quantite > 0 ? 'success' : 'danger'}">
+                  ${med.quantite ?? 0}
+                </span>
+              </td>
+              <td>${parseFloat(med.prix).toFixed(2)} FCFA</td>
+              <td>
+                <button class="btn btn-sm btn-primary edit-medicine-btn" onclick="openEditMedicineModal(${med.id}, '${med.nom}', '${med.dosage || ''}', '${med.categorie || ''}', ${med.prix}, '${med.description || ''}', ${med.quantite})">Éditer</button>
+              </td>
+            </tr>
+          `).join('');
+        } else {
+          document.getElementById('medicinesTableBody').innerHTML = '<tr><td colspan="5" class="text-center text-danger">Erreur: ' + result.error + '</td></tr>';
+        }
+      } catch (error) {
+        console.error('Erreur chargement:', error);
+        document.getElementById('medicinesTableBody').innerHTML = '<tr><td colspan="5" class="text-center text-danger">Erreur de connexion</td></tr>';
+      }
+    }
+
+    // Ajouter un médicament
+    async function handleAddMedicine(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('addMedicineForm');
+      const formData = new FormData(form);
+      formData.append('action', 'create');
+
+      try {
+        const response = await fetch('/PharmaLocal/backend/api/medicaments.php', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          // Fermer le modal
+          const modal = bootstrap.Modal.getInstance(document.getElementById('addMedicineModal'));
+          if (modal) modal.hide();
+          
+          // Réinitialiser le formulaire
+          form.reset();
+          importedMedicines = []; // Réinitialiser les médicaments importés
+          
+          // Recharger les médicaments
+          loadMedicines();
+          
+          // Afficher message de succès
+          showAlert('success', result.message || 'Médicament ajouté avec succès');
+        } else {
+          showAlert('danger', result.error || 'Erreur lors de l\'ajout');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur de connexion: ' + error.message);
+      }
+    }
+
+    // Gérer l'import de fichiers
+    async function handleFileImport(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('action', 'import');
+      formData.append('file', file);
+
+      try {
+        const response = await fetch('/PharmaLocal/backend/api/medicaments.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        const text = await response.text();
+        
+        if (!text) {
+          showAlert('danger', 'Erreur: Réponse vide du serveur');
+          return;
+        }
+
+        let result;
+        try {
+          result = JSON.parse(text);
+        } catch (e) {
+          showAlert('danger', 'Erreur: Réponse invalide du serveur');
+          return;
+        }
+
+        if (result.success && result.medicines && result.medicines.length > 0) {
+          importedMedicines = result.medicines;
+          
+          // Pré-remplir le premier médicament
+          const form = document.getElementById('addMedicineForm');
+          const firstMed = result.medicines[0];
+          if (firstMed) {
+            if (firstMed.nom) form.querySelector('[name="nom"]').value = firstMed.nom;
+            if (firstMed.dosage) form.querySelector('[name="dosage"]').value = firstMed.dosage;
+            if (firstMed.categorie) form.querySelector('[name="categorie"]').value = firstMed.categorie;
+            if (firstMed.prix) form.querySelector('[name="prix"]').value = firstMed.prix;
+            if (firstMed.description) form.querySelector('[name="description"]').value = firstMed.description;
+            if (firstMed.quantite) form.querySelector('[name="quantite"]').value = firstMed.quantite;
+          }
+
+          // Afficher un bouton "Importer tous" si plusieurs médicaments
+          if (result.medicines.length > 1) {
+            showAlert('success', result.message + ' - Cliquez sur "Importer tous" pour ajouter tous les médicaments');
+            document.getElementById('btnImportAll').style.display = 'inline-block';
+          } else {
+            showAlert('success', result.message);
+            document.getElementById('btnImportAll').style.display = 'none';
+          }
+        } else {
+          showAlert('danger', result.error || 'Erreur lors de l\'import');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur lors de l\'import: ' + error.message);
+      }
+
+      // Réinitialiser le fichier
+      event.target.value = '';
+    }
+
+    // Importer tous les médicaments
+    async function importAllMedicines() {
+      if (importedMedicines.length === 0) {
+        showAlert('warning', 'Aucun médicament à importer');
+        return;
+      }
+
+      const confirmMsg = `Êtes-vous sûr de vouloir ajouter ${importedMedicines.length} médicament(s)?`;
+      if (!confirm(confirmMsg)) return;
+
+      try {
+        let successCount = 0;
+        let errorCount = 0;
+
+        for (const med of importedMedicines) {
+          const formData = new FormData();
+          formData.append('action', 'create');
+          formData.append('nom', med.nom);
+          formData.append('dosage', med.dosage);
+          formData.append('categorie', med.categorie);
+          formData.append('prix', med.prix);
+          formData.append('description', med.description);
+          formData.append('quantite', med.quantite);
+
+          try {
+            const response = await fetch('/PharmaLocal/backend/api/medicaments.php', {
+              method: 'POST',
+              body: formData
+            });
+            const result = await response.json();
+
+            if (result.success) {
+              successCount++;
+            } else {
+              errorCount++;
+            }
+          } catch (e) {
+            errorCount++;
+          }
+        }
+
+        // Fermer le modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addMedicineModal'));
+        if (modal) modal.hide();
+
+        // Réinitialiser
+        importedMedicines = [];
+        document.getElementById('addMedicineForm').reset();
+        document.getElementById('btnImportAll').style.display = 'none';
+
+        // Recharger et afficher le résultat
+        loadMedicines();
+        showAlert('success', `${successCount} médicament(s) ajouté(s)${errorCount > 0 ? `, ${errorCount} erreur(s)` : ''}`);
+      } catch (error) {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur lors de l\'import en masse');
+      }
+    }
+
+    // Afficher une alerte
+    function showAlert(type, message) {
+      showToast(type, message, 5000);
+    }
+
+    // Ouvrir le modal d'édition
+    function openEditMedicineModal(id, nom, dosage, categorie, prix, description, quantite) {
+      document.getElementById('edit-medicine-id').value = id;
+      document.getElementById('edit-medicine-nom').value = nom;
+      document.getElementById('edit-medicine-dosage').value = dosage;
+      document.getElementById('edit-medicine-categorie').value = categorie;
+      document.getElementById('edit-medicine-prix').value = prix;
+      document.getElementById('edit-medicine-description').value = description;
+      document.getElementById('edit-medicine-quantite').value = quantite;
+
+      const modal = new bootstrap.Modal(document.getElementById('editMedicineModal'));
+      modal.show();
+    }
+
+    // Gérer la soumission du formulaire d'édition
+    document.getElementById('editMedicineForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      
+      const form = this;
+      const formData = new FormData(form);
+      formData.append('action', 'update');
+
+      try {
+        const response = await fetch('/PharmaLocal/backend/api/medicaments.php', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          // Fermer le modal
+          const modal = bootstrap.Modal.getInstance(document.getElementById('editMedicineModal'));
+          if (modal) modal.hide();
+          
+          // Recharger les médicaments
+          loadMedicines();
+          
+          // Afficher message de succès
+          showAlert('success', result.message || 'Médicament modifié avec succès');
+        } else {
+          showAlert('danger', result.error || 'Erreur lors de la modification');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        showAlert('danger', 'Erreur de connexion: ' + error.message);
+      }
+    });
+  </script>
+  <script src="/PharmaLocal/frontend/users/js/toast-helper.js"></script>
+  <script src="js/sidebar-toggle.js"></script>
+</body>
+</html>
